@@ -17,13 +17,20 @@ class Eden_Tests_Utility_TimezoneTest extends \PHPUnit_Framework_TestCase
 	public function testConvertTo() 
 	{
 		//zone = Asia/Manila, time = 1358756901, date = January 21, 2013 8:28AM
-		//zone = America/Los_Angeles, time = ?, date = January 20, 2013 4:28PM
+		//zone = America/Los_Angeles, time = ?, date = January 20, 2013 5:28PM
 		
 		$date = eden('utility')
-			->timezone('Asia/Manila', 1358778480)
+			->timezone('Asia/Manila', 1358756901)
 			->convertTo('America/Los_Angeles', 'F d, Y g:iA');
 		
-		$this->assertEquals('January 20, 2013 4:28PM', $date);
+		$this->assertEquals('January 20, 2013 5:28PM', $date);
+                
+                // reverse
+		$date = eden('utility')
+			->timezone('America/Los_Angeles', 1358702901)
+			->convertTo('Asia/Manila', 'F d, Y g:iA');
+		
+		$this->assertEquals('January 21, 2013 8:28AM', $date);
 	}
 	
 	public function testGetGMT() 

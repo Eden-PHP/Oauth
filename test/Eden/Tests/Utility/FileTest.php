@@ -39,7 +39,7 @@ class Eden_Tests_Utility_FileTest extends \PHPUnit_Framework_TestCase
 
     public function testGetFolder() 
     {
-        $this->assertEquals(__DIR__, eden('utility')->file(__FILE__)->getFolder());
+        $this->assertEquals(str_replace('\\', '/', __DIR__), eden('utility')->file(__FILE__)->getFolder());
     }
 
     public function testGetMime() 

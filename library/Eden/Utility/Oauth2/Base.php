@@ -7,8 +7,10 @@
  * distributed with this package.
  */
 
-namespace Eden\Utility\Oauth;
+namespace Eden\Utility\Oauth2;
 
+use Eden\Utility\Argument;
+use Eden\Utility\Curl;
 use Eden\Utility\Base as UtilityBase;
 
 /**
@@ -53,16 +55,16 @@ abstract class Base extends UtilityBase
      * @param string
      * @return void
      */
-    public function _construct($client, $secret, $redirect, $requestUrl, $accessUrl)
+    public function __construct($client, $secret, $redirect, $requestUrl, $accessUrl)
     {
-        exit;
+//        exit;
         //argument test
         Argument::i()
-            ->argument(1, 'string')	//argument 1 must be a string
-            ->argument(2, 'string')	//argument 2 must be a string
-            ->argument(3, 'url')    //argument 3 must be a url
-            ->argument(4, 'url')    //argument 4 must be a url
-            ->argument(5, 'url');   //argument 5 must be a url
+            ->test(1, 'string')	//argument 1 must be a string
+            ->test(2, 'string')	//argument 2 must be a string
+            ->test(3, 'url')    //argument 3 must be a url
+            ->test(4, 'url')    //argument 4 must be a url
+            ->test(5, 'url');   //argument 5 must be a url
 
         $this->client       = $client;
         $this->secret       = $secret;
@@ -190,30 +192,30 @@ abstract class Base extends UtilityBase
      * @param *string
      * @return string
      */
-//    protected function getLoginUrl($query)
-//    {
-//        //if there is a scope
-//        if(!is_null($this->scope)) {
-//            //if scope is in array
-//            if(is_array($this->scope)) {
-//                $this->scope = implode(' ', $this->scope);
-//            }
-//            //add scope to the query
-//            $query['scope'] = $this->scope;
-//        }
-//        //if there is state
-//        if(!is_null($this->state)) {
-//            //add state to the query
-//            $query['state'] = $this->state;
-//        }
-//        //if there is display
-//        if(!is_null($this->display)) {
-//            //add state to the query
-//            $query['display'] = $this->display;
-//        }
-//        //generate a login url
-//        return $this->requestUrl.'?'.http_build_query($query);
-//    }
+    protected function generateLoginUrl($query)
+    {
+        //if there is a scope
+        if(!is_null($this->scope)) {
+            //if scope is in array
+            if(is_array($this->scope)) {
+                $this->scope = implode(' ', $this->scope);
+            }
+            //add scope to the query
+            $query['scope'] = $this->scope;
+        }
+        //if there is state
+        if(!is_null($this->state)) {
+            //add state to the query
+            $query['state'] = $this->state;
+        }
+        //if there is display
+        if(!is_null($this->display)) {
+            //add state to the query
+            $query['display'] = $this->display;
+        }
+        //generate a login url
+        return $this->requestUrl.'?'.http_build_query($query);
+    }
 
 
     /**
@@ -224,46 +226,46 @@ abstract class Base extends UtilityBase
      * @param *bool
      * @return string
      */
-//    protected function getAccess($query, $code = NULL, $refreshToken)
-//    {
-//        //if there is a code
-//        if(!is_null($code)) {
-//            //if you only want to refresh a token
-//            if($refreshToken) {
-//                //put code in the query
-//                $query['refresh_token'] = $code;
-//            //else you want to request a token
-//            } else {
-//                //put code in the query
-//                $query[self::CODE] = $code;
-//            }
-//        }
-//
-//        //set curl
-//        $curl = Curl::i()
-//          ->setUrl($this->accessUrl)
-//          ->verifyHost(false)
-//          ->verifyPeer(false)
-//          ->setHeaders(self::TYPE, self::REQUEST)
-//          ->setPostFields(http_build_query($query));
-//
-//        $result =  $curl->getResponse();
-//
-//        $this->meta	= $curl->getMeta();
-//        $this->meta['query'] = $query;
-//        $this->meta['url'] = $this->accessUrl;
-//        $this->meta['response']	= $result;
-//
-//        //check if results is in JSON format
-//        if($this->isJson($result)) {
-//            //if it is in json, lets json decode it
-//            $response =  json_decode($result, true);
-//        //else its not in json format
-//        } else {
-//            //parse it to make it an array
-//             parse_str($result, $response);
-//        }
-//
-//        return $response;
-//    }
+    protected function generateAccess($query, $code = NULL, $refreshToken)
+    {
+        //if there is a code
+        if(!is_null($code)) {
+            //if you only want to refresh a token
+            if($refreshToken) {
+                //put code in the query
+                $query['refresh_token'] = $code;
+            //else you want to request a token
+            } else {
+                //put code in the query
+                $query[self::CODE] = $code;
+            }
+        }
+
+        //set curl
+        $curl = Curl::i()
+          ->setUrl($this->accessUrl)
+          ->verifyHost(false)
+          ->verifyPeer(false)
+          ->setHeaders(self::TYPE, self::REQUEST)
+          ->setPostFields(http_build_query($query));
+
+        $result =  $curl->getResponse();
+
+        $this->meta	= $curl->getMeta();
+        $this->meta['query'] = $query;
+        $this->meta['url'] = $this->accessUrl;
+        $this->meta['response']	= $result;
+
+        //check if results is in JSON format
+        if($this->isJson($result)) {
+            //if it is in json, lets json decode it
+            $response =  json_decode($result, true);
+        //else its not in json format
+        } else {
+            //parse it to make it an array
+             parse_str($result, $response);
+        }
+
+        return $response;
+    }
 }

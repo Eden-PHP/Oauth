@@ -9,6 +9,8 @@
 
 namespace Eden\Utility\Oauth2;
 
+use Eden\Utility\Argument;
+
 /**
  * Oauth2 client class
  *
@@ -95,7 +97,7 @@ class Client extends Base
           'access_type' => $this->accessType,
           'approval_prompt'	=> $this->approvalPrompt);
 
-        return $this->getLoginUrl($query);
+        return $this->generateLoginUrl($query);
     }
 
     /**
@@ -127,6 +129,6 @@ class Client extends Base
                 'grant_type'	=> $this->grantType);
         }
 
-        return $this->getAccess($query, $code, $refreshToken);
+        return $this->generateAccess($query, $code, $refreshToken);
     }
 }

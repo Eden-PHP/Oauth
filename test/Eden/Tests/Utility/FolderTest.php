@@ -43,10 +43,10 @@ class Eden_Tests_Utility_FolderTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, count($folders));
 
         $folders = eden('utility')->folder(__DIR__.'/../../../assets')->getFolders(null, true);
-        $this->assertEquals(3, count($folders));
+        $this->assertEquals(2, count($folders));
 
         $folders = eden('utility')->folder(__DIR__.'/../../../assets')->getFolders('/^test/', true);
-        $this->assertEquals(2, count($folders));
+        $this->assertEquals(1, count($folders));
     }
 
     public function testGetName() 

@@ -1,4 +1,6 @@
-<?php //-->
+<?php
+
+//-->
 /*
  * This file is part of the Utility package of the Eden PHP Library.
  * (c) 2013-2014 Openovate Labs
@@ -7,13 +9,33 @@
  * distributed with this package.
  */
 
-class Eden_Tests_Utility_Oauth2_DesktopTest extends \PHPUnit_Framework_TestCase
-{
-    public function testGetLoginUrl()
-    {
+class Eden_Tests_Utility_Oauth2_DesktopTest extends \PHPUnit_Framework_TestCase {
+
+    public function testGetLoginUrl() {
+        $clientId = '12345';
+        $url = 'http://www.google.com';
+        $encodedUrl = urlencode($url);
+
+        $response = eden('utility')
+                ->oauth2()
+                ->desktop($clientId, 'www.google.com', $url, $url, $url)
+                ->getLoginUrl();
+
+        $this->assertEquals($url . '?response_type=code' .
+                '&client_id=' . $clientId .
+                '&redirect_uri=' . $encodedUrl, $response);
     }
 
-    public function testGetAccess()
-    {
+    public function testGetAccess() {
+        $clientId = '12345';
+        $url = 'http://www.google.com';
+
+        $response = eden('utility')
+                ->oauth2()
+                ->desktop($clientId, 'www.google.com', $url, $url, $url)
+                ->getAccess('codeless');
+
+        $this->assertNotEmpty($response);
     }
+
 }

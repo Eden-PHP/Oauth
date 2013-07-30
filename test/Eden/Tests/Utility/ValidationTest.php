@@ -94,9 +94,25 @@ class Eden_Tests_Utility_ValidationTest extends \PHPUnit_Framework_TestCase
 		$valid = eden('utility')->validation('Not div>Cool')->isType('html');
         $this->assertFalse($valid);
 		
-		$valid = eden('utility')->validation(4111111111111111)->isType('cc');
+        // Credit Card Number must treated as string not numeric value..
+        // Pattern doesn't much on numeric when it exceed to 13+ length of value..
+                // Visa
+		$valid = eden('utility')->validation('4485945357740101')->isType('cc');
         $this->assertTrue($valid);
-		$valid = eden('utility')->validation(1230495)->isType('cc');
+                // MasterCard
+		$valid = eden('utility')->validation('5508760509409558')->isType('cc');
+        $this->assertTrue($valid);
+                // AMEX
+		$valid = eden('utility')->validation('340539457582696')->isType('cc');
+        $this->assertTrue($valid);
+                // Discover
+		$valid = eden('utility')->validation('6011938784708070')->isType('cc');
+        $this->assertTrue($valid);
+                // Dinners Club
+		$valid = eden('utility')->validation('36356552261053')->isType('cc');
+        $this->assertTrue($valid);
+        
+		$valid = eden('utility')->validation('1230495')->isType('cc');
         $this->assertFalse($valid);
 		$valid = eden('utility')->validation('Foo')->isType('cc');
         $this->assertFalse($valid);

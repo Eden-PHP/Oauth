@@ -9,6 +9,8 @@
 
 namespace Eden\Utility\Oauth2;
 
+use Eden\Utility\Argument;
+
 /**
  * Oauth2 desktop class
  *
@@ -53,7 +55,7 @@ class Desktop extends Base
           'client_id' => $this->client,
           'redirect_uri' => $this->redirect);
 
-        return $this->getLoginUrl($query);
+        return $this->generateLoginUrl($query);
 
     }
 
@@ -63,7 +65,7 @@ class Desktop extends Base
      * @param string*
      * @return array
      */
-    public function getAccess($code)
+    public function getAccess($code, $refreshToken = false)
     {
         //argument 1 must be a string
         Argument::i()->test(1, 'string');
@@ -75,6 +77,6 @@ class Desktop extends Base
             'redirect_uri'	=> $this->redirect,
             'grant_type'	=> $this->grantType);
 
-        return $this->getAccess($query, $code);
+        return $this->generateAccess($query, $code, $refreshToken);
     }
 }

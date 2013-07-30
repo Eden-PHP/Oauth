@@ -7,7 +7,7 @@
  * distributed with this package.
  */
 
-namespace Eden\Utility\Oauth2;
+namespace Eden\Utility\Oauth;
 
 use Eden\Utility\Base as UtilityBase;
 
