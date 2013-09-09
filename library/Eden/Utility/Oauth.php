@@ -77,16 +77,22 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToGet()                      //set method to get
-			->setSignatureToHmacSha1()              //set method to HMAC-SHA1
-			->when($realm)                          //when there is a realm
-			->setRealm($realm)                      //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);                     //get the token
+			//set method to get
+			->setMethodToGet()
+			 //set method to HMAC-SHA1 
+			->setSignatureToHmacSha1()
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm);   
+			//when there is a verifier     
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);                     	
 	}
 	
 	/**
@@ -124,17 +130,24 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()                    //use authorization header
-			->setMethodToGet()                      //set method to get
-			->setSignatureToHmacSha1()              //set method to HMAC-SHA1
-			->when($realm)                          //when there is a realm
-			->setRealm($realm)                      //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);	                    //get the token
+			//use authorization header
+			->useAuthorization()                    
+			//set method to get
+			->setMethodToGet()                      
+			//set method to HMAC-SHA1
+			->setSignatureToHmacSha1()              
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm);
+			//when there is a verifier        
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);	                    
 	}
 	
 	/**
@@ -163,13 +176,18 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()       //use authorization header
-			->setMethodToGet()         //set method to get
-			->setSignatureToHmacSha1() //set method to HMAC-SHA1
-			->when($realm)             //when there is a realm
-			->setRealm($realm)         //set the realm
-			->endWhen()	               //return back the consumer
-			->getToken($query);	       //get the token
+			//use authorization header
+			->useAuthorization()       
+			//set method to get
+			->setMethodToGet()         
+			//set method to HMAC-SHA1
+			->setSignatureToHmacSha1() 
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm);     
+			//get the token   
+			})->getToken($query);	       
 	}
 	
 	/**
@@ -198,12 +216,16 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToGet()          //set method to get
-			->setSignatureToHmacSha1()	//set method to HMAC-SHA1
-			->when($realm)              //when there is a realm
-			->setRealm($realm)          //set the realm
-			->endWhen()                 //return back the consumer
-			->getToken($query);	        //get the token
+			//set method to get
+			->setMethodToGet()          
+			//set method to HMAC-SHA1
+			->setSignatureToHmacSha1()	
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm);        
+				//get the token
+			})->getToken($query);	        
 	}
 	
 	/**
@@ -241,16 +263,22 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToPost()	                    //set method to post
-			->setSignatureToHmacSha1()              //set method to HMAC-SHA1
-			->when($realm)                          //when there is a realm
-			->setRealm($realm)                      //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);                     //get the token
+			//set method to post
+			->setMethodToPost()	                    
+			//set method to HMAC-SHA1
+			->setSignatureToHmacSha1()              
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm);
+			//when there is a verifier        
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);                     
 	}
 	
 	/**
@@ -288,17 +316,24 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()                    //use authorization header
-			->setMethodToPost()                     //set method to post
-			->setSignatureToHmacSha1()              //set method to HMAC-SHA1
-			->when($realm)	                        //when there is a realm
-			->setRealm($realm)                      //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);	                    //get the token
+			//use authorization header
+			->useAuthorization()                    
+			//set method to post
+			->setMethodToPost()                     
+			//set method to HMAC-SHA1
+			->setSignatureToHmacSha1()              
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//when there is a verifier       
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);	                    
 	}
 	
 	/**
@@ -327,13 +362,18 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()       //use authorization header
-			->setMethodToPost()	       //set method to post
-			->setSignatureToHmacSha1() //set method to HMAC-SHA1
-			->when($realm)             //when there is a realm
-			->setRealm($realm)         //set the realm
-			->endWhen()	               //return back the consumer
-			->getToken($query);	       //get the token
+			//use authorization header
+			->useAuthorization()       
+			//set method to post
+			->setMethodToPost()	       
+			//set method to HMAC-SHA1
+			->setSignatureToHmacSha1() 
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//get the token
+			})->getToken($query);	       
 	}
 	
 	/**
@@ -362,12 +402,16 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToPost()	       //set method to post
-			->setSignatureToHmacSha1() //set method to HMAC-SHA1
-			->when($realm)             //when there is a realm
-			->setRealm($realm)         //set the realm
-			->endWhen()	               //return back the consumer
-			->getToken($query);	       //get the token
+			//set method to post
+			->setMethodToPost()	       
+			//set method to HMAC-SHA1
+			->setSignatureToHmacSha1() 
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//get the token
+			})->getToken($query);	       
 	}
 	
 	/**
@@ -405,16 +449,22 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToGet()                      //set method to get
-			->setSignatureToPlainText()	            //set method to PLAIN TEXT
-			->when($realm)                          //when there is a realm
-			->setRealm($realm)                      //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);	                    //get the token
+			//set method to get
+			->setMethodToGet()                      
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	            
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//when there is a verifier       
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);
 	}
 	
 	/**
@@ -452,17 +502,24 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()                    //use authorization header
-			->setMethodToGet()                      //set method to get
-			->setSignatureToPlainText()	            //set method to PLAIN TEXT
-			->when($realm)                          //when there is a realm
-			->setRealm($realm)                      //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);	                    //get the token
+			//use authorization header
+			->useAuthorization()                    
+			//set method to get
+			->setMethodToGet()                      
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	            
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//when there is a verifier       
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);
 	}
 	
 	/**
@@ -491,13 +548,18 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()        //use authorization header
-			->setMethodToGet()          //set method to get
-			->setSignatureToPlainText()	//set method to PLAIN TEXT
-			->when($realm)              //when there is a realm
-			->setRealm($realm)          //set the realm
-			->endWhen()	                //return back the consumer
-			->getToken($query);	        //get the token
+			//use authorization header
+			->useAuthorization()        
+			//set method to get
+			->setMethodToGet()          
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//get the token
+			})->getToken($query);
 	}
 	
 	/**
@@ -526,12 +588,16 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToGet()          //set method to get
-			->setSignatureToPlainText()	//set method to PLAIN TEXT
-			->when($realm)              //when there is a realm
-			->setRealm($realm)          //set the realm
-			->endWhen()	                //return back the consumer
-			->getToken($query);	        //get the token
+			//set method to get
+			->setMethodToGet()          
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//get the token
+			})->getToken($query);
 	}
 	
 	/**
@@ -569,16 +635,22 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToPost()	                    //set method to post
-			->setSignatureToPlainText()	            //set method to PLAIN TEXT
-			->when($realm)                          //when there is a realm
-			->setRealm($realm)                      //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);	                    //get the token
+			//set method to post
+			->setMethodToPost()	                    
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	            
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//when there is a verifier       
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);
 	}
 	
 	/**
@@ -616,17 +688,24 @@ class Oauth extends Base
 			->test(8, 'string', 'null'); //Argument 8 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()                    //use authorization header
-			->setMethodToPost()	                    //set method to post
-			->setSignatureToPlainText()	            //set method to PLAIN TEXT
-			->when($realm)                          //when there is a realm
-			->setRealm($realm)	                    //set the realm
-			->endWhen()	                            //return back the consumer
-			->when($verifier)                       //when there is a verifier
-			->setVerifier($verifier)                //set the verifier
-			->endWhen()	                            //return back the consumer
-			->setRequestToken($token, $tokenSecret)	//set the request token
-			->getToken($query);	                    //get the token
+			//use authorization header
+			->useAuthorization()                    
+			//set method to post
+			->setMethodToPost()	                    
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	            
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//when there is a verifier       
+			})->when($verifier, function($instance) use ($verifier) {	
+				//set the verifier
+				$instance->setVerifier($verifier);  
+			//set the request token
+			})->setRequestToken($token, $tokenSecret)	
+			//get the token
+			->getToken($query);
 	}
 	
 	/**
@@ -655,13 +734,18 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->useAuthorization()        //use authorization header
-			->setMethodToPost()	        //set method to post
-			->setSignatureToPlainText()	//set method to PLAIN TEXT
-			->when($realm)              //when there is a realm
-			->setRealm($realm)          //set the realm
-			->endWhen()	                //return back the consumer
-			->getToken($query);	        //get the token
+			//use authorization header
+			->useAuthorization()        
+			//set method to post
+			->setMethodToPost()	        
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//get the token
+			})->getToken($query);
 	}
 	
 	/**
@@ -690,11 +774,15 @@ class Oauth extends Base
 			->test(5, 'string', 'null'); //Argument 5 must be a string or null
 			
 		return $this->consumer($url, $key, $secret)
-			->setMethodToPost()	        //set method to post
-			->setSignatureToPlainText()	//set method to PLAIN TEXT
-			->when($realm)              //when there is a realm
-			->setRealm($realm)          //set the realm
-			->endWhen()	                //return back the consumer
-			->getToken($query);	        //get the token
+			//set method to post
+			->setMethodToPost()	        
+			//set method to PLAIN TEXT
+			->setSignatureToPlainText()	
+			//when there is a realm
+			->when($realm, function($instance) use ($realm) {	
+				//set the realm
+				$instance->setRealm($realm); 
+			//get the token
+			})->getToken($query);
 	}
 }
