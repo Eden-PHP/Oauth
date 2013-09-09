@@ -57,7 +57,6 @@ abstract class Base extends UtilityBase
      */
     public function __construct($client, $secret, $redirect, $requestUrl, $accessUrl)
     {
-//        exit;
         //argument test
         Argument::i()
             ->test(1, 'string')	//argument 1 must be a string
