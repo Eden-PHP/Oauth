@@ -37,8 +37,10 @@ class Collection extends Base implements \ArrayAccess, \Iterator, \Serializable,
     public function __call($name, $args) 
     {
 		Argument::i()
-            ->test(1, 'string') //argument 1 must be a string
-            ->test(2, 'array'); //argument 2 must be an array
+			//argument 1 must be a string
+            ->test(1, 'string') 
+			//argument 2 must be an array
+            ->test(2, 'array'); 
 
         //if the method starts with get
         if(strpos($name, 'get') === 0) {
@@ -316,8 +318,10 @@ class Collection extends Base implements \ArrayAccess, \Iterator, \Serializable,
     public function offsetSet($offset, $value) 
     {
         Argument::i()
-			->test(1, 'scalar', 'null', 'bool') //argument 1 must be scalar, null or bool
-			->test(2, 'array', $this->model); //argument 2 must be an array or Eden\Utility\Model
+			//argument 1 must be scalar, null or bool
+			->test(1, 'scalar', 'null', 'bool') 
+			//argument 2 must be an array or Eden\Utility\Model
+			->test(2, 'array', $this->model); 
 
         if(is_array($value)) {
             //make it a model

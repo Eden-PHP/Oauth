@@ -45,10 +45,14 @@ class Image extends Base
     public function __construct($data, $type = null, $path = true, $quality = 75)
     {
         Argument::i()
-            ->test(1, 'string')         //argument 1 must be a string
-            ->test(2, 'string', 'null') //argument 2 must be a string or null
-            ->test(3, 'bool')           //argument 3 must be a boolean
-            ->test(4, 'int');           //argument 4 must be an integer
+			//argument 1 must be a string
+            ->test(1, 'string')         
+			//argument 2 must be a string or null
+            ->test(2, 'string', 'null') 
+			//argument 3 must be a boolean
+            ->test(3, 'bool')           
+			//argument 4 must be an integer
+            ->test(4, 'int');           
 
         $this->type = $type;
 
@@ -160,10 +164,14 @@ class Image extends Base
     {
         //argument test
         Argument::i()
-            ->test(1, 'numeric')  //Argument 1 must be a number
-            ->test(2, 'numeric')  //Argument 2 must be a number
-            ->test(3, 'numeric')  //Argument 3 must be a number
-            ->test(4, 'numeric'); //Argument 4 must be a number
+			//Argument 1 must be a number
+            ->test(1, 'numeric')  
+			//Argument 2 must be a number
+            ->test(2, 'numeric')  
+			//Argument 3 must be a number
+            ->test(3, 'numeric') 
+			//Argument 4 must be a number
+            ->test(4, 'numeric'); 
 
         //apply filter
         imagefilter($this->resource, IMG_FILTER_COLORIZE, $red, $blue, $green, $alpha);
@@ -199,8 +207,10 @@ class Image extends Base
     {
         //argument test
         Argument::i()
-            ->test(1, 'numeric', 'null')	//Argument 1 must be a number or null
-            ->test(2, 'numeric', 'null');	//Argument 2 must be a number or null
+			//Argument 1 must be a number or null
+            ->test(1, 'numeric', 'null')	
+			//Argument 2 must be a number or null
+            ->test(2, 'numeric', 'null');	
 
         //get the source width and height
         $orgWidth = imagesx($this->resource);
@@ -481,8 +491,10 @@ class Image extends Base
     {
         //argument test
         Argument::i()
-            ->test(1, 'numeric', 'null')  //Argument 1 must be a number or null
-            ->test(2, 'numeric', 'null'); //Argument 2 must be a number or null
+			//Argument 1 must be a number or null
+            ->test(1, 'numeric', 'null')  
+			//Argument 2 must be a number or null
+            ->test(2, 'numeric', 'null'); 
 
         //get the source width and height
         $orgWidth = imagesx($this->resource);
@@ -545,8 +557,10 @@ class Image extends Base
     {
         //argument test
         Argument::i()
-            ->test(1, 'numeric')	//Argument 1 must be a number
-            ->test(2, 'numeric');	//Argument 2 must be a number
+			//Argument 1 must be a number
+            ->test(1, 'numeric')	
+			//Argument 2 must be a number
+            ->test(2, 'numeric');	
 
         //rotate the image
         $rotate = imagerotate($this->resource, $degree, $background);
@@ -573,8 +587,10 @@ class Image extends Base
     {
         //argument test
         Argument::i()
-            ->test(1, 'numeric', 'null')	//Argument 1 must be a number or null
-            ->test(2, 'numeric', 'null');	//Argument 2 must be a number or null
+			//Argument 1 must be a number or null
+            ->test(1, 'numeric', 'null')	
+			//Argument 2 must be a number or null
+            ->test(2, 'numeric', 'null');	
 
         //get the source width and height
         $orgWidth = imagesx($this->resource);

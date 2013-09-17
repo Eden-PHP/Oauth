@@ -41,8 +41,10 @@ class Curl extends Base implements \ArrayAccess
     public function __call($name, $args) 
     {
         Argument::i()
-            ->test(1, 'string') //argument 1 must be a string
-            ->test(2, 'array'); //argument 2 must be an array
+			//argument 1 must be a string
+            ->test(1, 'string') 
+			//argument 2 must be an array
+            ->test(2, 'array'); 
 
         if(strpos($name, 'set') === 0) {
             $method = substr($name, 3);
@@ -388,8 +390,10 @@ class Curl extends Base implements \ArrayAccess
     public function setHeaders($key, $value = null) 
     {
         Argument::i()
-            ->test(1, 'array', 'string') //argument 1 must be a string or array
-            ->test(2, 'scalar','null');  //argument 2 must be scalar or null
+			//argument 1 must be a string or array
+            ->test(1, 'array', 'string') 
+			//argument 2 must be scalar or null
+            ->test(2, 'scalar','null');  
 
         if(is_array($key)) {
             $this->headers = $key;
@@ -410,8 +414,10 @@ class Curl extends Base implements \ArrayAccess
     public function setUrlParameter($key, $value = null) 
     {
         Argument::i()
-            ->test(1, 'array', 'string') //argument 1 must be a string or array
-            ->test(2, 'scalar');         //argument 2 must be scalar
+			//argument 1 must be a string or array
+            ->test(1, 'array', 'string') 
+			//argument 2 must be scalar
+            ->test(2, 'scalar');         
 
         if(is_array($key)) {
             $this->param = $key;

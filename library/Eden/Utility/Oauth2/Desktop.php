@@ -30,12 +30,14 @@ class Desktop extends Base
      * @param string|null
      * @return string
      */
-    public function getLoginUrl($scope = NULL, $display = NULL)
+    public function getLoginUrl($scope = null, $display = null)
     {
         //argument test
         Argument::i()
-            ->test(1, 'string', 'array', 'null')	//argument 1 must be a string, array or null
-            ->test(2, 'string', 'array', 'null');	//argument 2 must be a string, array or null
+			//argument 1 must be a string, array or null
+            ->test(1, 'string', 'array', 'null')	
+			//argument 2 must be a string, array or null
+            ->test(2, 'string', 'array', 'null');	
 
         //if scope in not null
         if(!is_null($scope)) {

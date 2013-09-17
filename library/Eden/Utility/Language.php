@@ -212,8 +212,10 @@ class Language extends Base implements \ArrayAccess, \Iterator
 	public function translate($key, $value) 
 	{
 		Argument::i()
-			->test(1, 'string')  //argument 1 must be a string
-			->test(2, 'string'); //argument 1 must be a string
+			//argument 1 must be a string
+			->test(1, 'string')  
+			//argument 2 must be a string
+			->test(2, 'string'); 
 			
 		$this->language[$key] = $value;
 		

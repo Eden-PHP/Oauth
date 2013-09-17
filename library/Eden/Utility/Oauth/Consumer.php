@@ -21,20 +21,20 @@ class Consumer extends Base
 	const AUTH_HEADER = 'Authorization: OAuth %s';
 	const POST_HEADER = 'Content-Type: application/x-www-form-urlencoded';
 	
-	protected $consumerKey = NULL; 
-	protected $consumerSecret = NULL; 
-	protected $requestToken = NULL; 
-	protected $requestSecret = NULL; 
+	protected $consumerKey = null; 
+	protected $consumerSecret = null; 
+	protected $requestToken = null; 
+	protected $requestSecret = null; 
 	protected $useAuthorization = false;
 	
-	protected $url	= NULL; 
-	protected $method = NULL;
-	protected $realm = NULL; 
-	protected $time = NULL; 
-	protected $nonce = NULL; 
-	protected $verifier = NULL; 
-	protected $callback = NULL;
-	protected $signature = NULL;
+	protected $url	= null; 
+	protected $method = null;
+	protected $realm = null; 
+	protected $time = null; 
+	protected $nonce = null; 
+	protected $verifier = null; 
+	protected $callback = null;
+	protected $signature = null;
 	protected $meta = array();
 	protected $headers	= array();
 	 
@@ -52,9 +52,12 @@ class Consumer extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')		//Argument 1 must be a string
-			->test(2, 'string')		//Argument 2 must be a string
-			->test(3, 'string');	//Argument 3 must be a string
+			//Argument 1 must be a string
+			->test(1, 'string')		
+			//Argument 2 must be a string
+			->test(2, 'string')		
+			//Argument 3 must be a string
+			->test(3, 'string');	
 		
 		$this->consumerKey 	= $key;
 		$this->consumerSecret 	= $secret;
@@ -78,8 +81,10 @@ class Consumer extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')		//Argument 1 must be a string
-			->test(2, 'bool');		//Argument 2 must be a boolean
+			//Argument 1 must be a string
+			->test(1, 'string')		
+			//Argument 2 must be a boolean
+			->test(2, 'bool');		
 		
 		//this is all possible configurations
 		$params = array(
@@ -220,7 +225,7 @@ class Consumer extends Base
 	 * @param string|null
 	 * @return array
 	 */
-	public function getMeta($key = NULL) 
+	public function getMeta($key = null) 
 	{
 		//argument 1 must be string or null
 		Argument::i()->test(1, 'string', 'null');
@@ -253,7 +258,7 @@ class Consumer extends Base
 	public function getResponse(array $query = array()) 
 	{
 		$headers = $this->headers;
-		$json = NULL;
+		$json = null;
 		
 		if($this->json) {
 			$json 	= json_encode($query);
@@ -296,7 +301,7 @@ class Consumer extends Base
 		} else {
 			if(trim($query)) {
 				//determine the conector
-				$connector = NULL;
+				$connector = null;
 				
 				//if there is no question mark
 				if(strpos($url, '?') === false) {
@@ -388,11 +393,13 @@ class Consumer extends Base
 	 * @param array|string
 	 * @return Eden\Utility\Oauth\Consumer
 	 */
-	public function setHeaders($key, $value = NULL) 
+	public function setHeaders($key, $value = null) 
 	{
 		Argument::i()
-			->test(1, 'array', 'string') //argument 1 must be an array or string
-			->test(2, 'scalar','null');  //argument 2 must be scalar or null
+			//argument 1 must be an array or string
+			->test(1, 'array', 'string') 
+			//argument 2 must be scalar or null
+			->test(2, 'scalar','null');  
 		
 		if(is_array($key)) {
 			$this->headers = $key;
@@ -484,8 +491,10 @@ class Consumer extends Base
 	public function setToken($token, $secret) 
 	{
 		Argument::i()
-			->test(1, 'string')  //argument 1 must be a string
-			->test(2, 'string'); //argument 2 must be a string
+			//argument 1 must be a string
+			->test(1, 'string')  
+			//argument 2 must be a string
+			->test(2, 'string'); 
 		
 		$this->requestToken = $token;
 		$this->requestSecret = $secret;

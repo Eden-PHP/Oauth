@@ -33,8 +33,10 @@ class ArrayType extends Base implements \ArrayAccess, \Iterator, \Serializable, 
     public function __call($name, $args) 
     {
         Argument::i()
-            ->test(1, 'string') //argument 1 must be a string
-            ->test(2, 'array'); //argument 2 must be an array
+			//argument 1 must be a string
+            ->test(1, 'string') 
+			//argument 2 must be an array
+            ->test(2, 'array'); 
 
         //if the method starts with get
         if(strpos($name, 'get') === 0) {
@@ -125,8 +127,10 @@ class ArrayType extends Base implements \ArrayAccess, \Iterator, \Serializable, 
     public function copy($source, $destination) 
     {
         Argument::i()
-            ->test(1, 'string')  //argument 1 must be a string
-            ->test(2, 'string'); //argument 2 must be a string
+			//argument 1 must be a string
+            ->test(1, 'string')  
+			//argument 2 must be a string
+            ->test(2, 'string'); 
 
         $this->data[$destination] = $this->data[$source];
         return $this;
@@ -303,8 +307,10 @@ class ArrayType extends Base implements \ArrayAccess, \Iterator, \Serializable, 
     {
         //Argument test
         Argument::i()
-            ->test(1, 'scalar')                //Argument 1 must be a scalar
-            ->test(3, 'scalar', 'null');    //Argument 3 must be a scalar or null
+			//Argument 1 must be a scalar
+            ->test(1, 'scalar')                
+			//Argument 3 must be a scalar or null
+            ->test(3, 'scalar', 'null');    
 
         $list = array();
         //for each row

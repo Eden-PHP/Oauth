@@ -36,9 +36,12 @@ class Timezone extends Base
     public function __construct($zone, $time = null)
     {
         TimezoneArgument::i()
-            ->test(1, 'string')                  //argument 1 must be a string
-            ->test(1, 'location', 'utc', 'abbr') //argument 2 must be a timezone indeicator
-            ->test(2, 'int', 'string', 'null');  //argument 3 must be an integer, string or null
+			//argument 1 must be a string
+            ->test(1, 'string')                  
+			//argument 2 must be a timezone indeicator
+            ->test(1, 'location', 'utc', 'abbr') 
+			//argument 3 must be an integer, string or null
+            ->test(2, 'int', 'string', 'null');  
 
         if(is_null($time)) {
             $time = time();
@@ -58,9 +61,12 @@ class Timezone extends Base
     public function convertTo($zone, $format = null)
     {
         TimezoneArgument::i()
-            ->test(1, 'string')                  //argument 1 must be a string
-            ->test(1, 'location', 'utc', 'abbr') //argument 1 must be a timezone identifier
-            ->test(2, 'string', 'null');         //argument 2 must be a string or null
+			//argument 1 must be a string
+            ->test(1, 'string')                  
+			//argument 1 must be a timezone identifier
+            ->test(1, 'location', 'utc', 'abbr') 
+			//argument 2 must be a string or null
+            ->test(2, 'string', 'null');         
 
         $time = $this->time + $this->calculateOffset($zone);
 
@@ -97,9 +103,12 @@ class Timezone extends Base
     public function getGMTDates($format, $interval = 30, $prefix = self::GMT)
     {
         TimezoneArgument::i()
-            ->test(1, 'string')          //argument 1 must be a string
-            ->test(2, 'int')             //argument 2 must be an integer
-            ->test(3, 'string', 'null'); //argument 3 must be a string or null
+			//argument 1 must be a string
+            ->test(1, 'string')          
+			//argument 2 must be an integer
+            ->test(2, 'int')             
+			//argument 3 must be a string or null
+            ->test(3, 'string', 'null'); 
 
         $offsets 	= $this->getOffsetDates($format, $interval);
         $dates 		= array();
@@ -133,8 +142,10 @@ class Timezone extends Base
     public function getOffsetDates($format, $interval = 30)
     {
         TimezoneArgument::i()
-            ->test(1, 'string') //argument 1 must be a string
-            ->test(2, 'int');   //argument 2 must be an integer
+			//argument 1 must be a string
+            ->test(1, 'string') 
+			//argument 2 must be an integer
+            ->test(2, 'int');   
 
         $dates = array();
         $interval *= 60;
@@ -193,9 +204,12 @@ class Timezone extends Base
     public function getUTCDates($format, $interval = 30, $prefix = self::UTC)
     {
         TimezoneArgument::i()
-            ->test(1, 'string')          //argument 1 must be a string
-            ->test(2, 'int')             //argument 2 must be an integer
-            ->test(3, 'string', 'null'); //argument 3 must be a string or null
+			//argument 1 must be a string
+            ->test(1, 'string')          
+			//argument 2 must be an integer
+            ->test(2, 'int')             
+			//argument 3 must be a string or null
+            ->test(3, 'string', 'null'); 
 
         $offsets 	= $this->getOffsetDates($format, $interval);
         $dates 		= array();

@@ -61,8 +61,10 @@ class Folder extends Path
     {
         //argument test
         Argument::i()
-            ->test(1, 'string', 'null') //argument 1 must be a string
-            ->test(2, 'bool');          //argument 2 must be a boolean
+			//argument 1 must be a string
+            ->test(1, 'string', 'null') 
+			//argument 2 must be a boolean
+            ->test(2, 'bool');          
 
         $this->absolute();
 
@@ -101,8 +103,10 @@ class Folder extends Path
     {
         //argument test
         Argument::i()
-            ->test(1, 'string', 'null') //argument 1 must be a string
-            ->test(2, 'bool');          //argument 2 must be a boolean
+			//argument 1 must be a string
+            ->test(1, 'string', 'null') 
+			//argument 2 must be a boolean
+            ->test(2, 'bool');          
 
         $this->absolute();
 
@@ -152,7 +156,8 @@ class Folder extends Path
      */
     public function isFolder($path = null) 
     {
-        Argument::i()->test(1, 'string', 'null');    //argument 1 must be a string
+		//argument 1 must be a string
+        Argument::i()->test(1, 'string', 'null');    
 
         //if path is string
         if(is_string($path)) {

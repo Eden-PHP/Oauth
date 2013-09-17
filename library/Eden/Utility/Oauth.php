@@ -35,9 +35,12 @@ class Oauth extends Base
 	public function consumer($url, $key, $secret) 
 	{
 		Argument::i()
-			->test(1, 'string')  //argument 1 must be a string
-			->test(2, 'string')  //argument 2 must be a string
-			->test(3, 'string'); //argument 3 must be a string
+			//argument 1 must be a string
+			->test(1, 'string')  
+			//argument 2 must be a string
+			->test(2, 'string')  
+			//argument 3 must be a string
+			->test(3, 'string'); 
 			
 		return Consumer::i($url, $key, $secret);
 	}
@@ -68,13 +71,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')			 //Argument 2 must be a string
-			->test(3, 'string')			 //Argument 3 must be a string
-			->test(4, 'string')			 //Argument 4 must be a string
-			->test(5, 'string')			 //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to get
@@ -121,13 +131,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(4, 'string')	         //Argument 4 must be a string
-			->test(5, 'string')	         //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -170,10 +187,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')          //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -210,10 +231,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')          //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to get
@@ -254,13 +279,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')          //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(4, 'string')	         //Argument 4 must be a string
-			->test(5, 'string')	         //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to post
@@ -307,13 +339,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(4, 'string')	         //Argument 4 must be a string
-			->test(5, 'string')	         //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -356,10 +395,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -396,10 +439,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')			 //Argument 1 must be a string
-			->test(2, 'string')			 //Argument 2 must be a string
-			->test(3, 'string')			 //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to post
@@ -440,13 +487,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(4, 'string')	         //Argument 4 must be a string
-			->test(5, 'string')	         //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to get
@@ -493,13 +547,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(4, 'string')	         //Argument 4 must be a string
-			->test(5, 'string')	         //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -542,10 +603,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -582,10 +647,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to get
@@ -626,13 +695,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')          //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(4, 'string')	         //Argument 4 must be a string
-			->test(5, 'string')	         //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to post
@@ -679,13 +755,20 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(4, 'string')	         //Argument 4 must be a string
-			->test(5, 'string')	         //Argument 5 must be a string
-			->test(7, 'string', 'null')	 //Argument 7 must be a string or null
-			->test(8, 'string', 'null'); //Argument 8 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	
+			//Argument 2 must be a string         
+			->test(2, 'string')	
+			//Argument 3 must be a string		 
+			->test(3, 'string')	
+			//Argument 4 must be a string		
+			->test(4, 'string')	
+			//Argument 5 must be a string	
+			->test(5, 'string')			
+			//Argument 7 must be a string or null
+			->test(7, 'string', 'null')	 
+			//Argument 8 must be a string or null
+			->test(8, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -728,10 +811,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//use authorization header
@@ -768,10 +855,14 @@ class Oauth extends Base
 	{
 		//argument test
 		Argument::i()
-			->test(1, 'string')	         //Argument 1 must be a string
-			->test(2, 'string')	         //Argument 2 must be a string
-			->test(3, 'string')	         //Argument 3 must be a string
-			->test(5, 'string', 'null'); //Argument 5 must be a string or null
+			//Argument 1 must be a string
+			->test(1, 'string')	         
+			//Argument 2 must be a string
+			->test(2, 'string')	         
+			//Argument 3 must be a string
+			->test(3, 'string')          
+			//Argument 5 must be a string or null
+			->test(5, 'string', 'null'); 
 			
 		return $this->consumer($url, $key, $secret)
 			//set method to post

@@ -71,12 +71,14 @@ class Client extends Base
      * @param string|null
      * @return url
      */
-    public function getLoginUrl($scope = NULL, $display = NULL)
+    public function getLoginUrl($scope = null, $display = null)
     {
         //argument test
         Argument::i()
-            ->test(1, 'string', 'array', 'null')	//argument 1 must be a string, array or null
-            ->test(2, 'string', 'array', 'null');	//argument 2 must be a string, array or null
+			//argument 1 must be a string, array or null
+            ->test(1, 'string', 'array', 'null')	
+			//argument 2 must be a string, array or null
+            ->test(2, 'string', 'array', 'null');	
 
         //if scope in not null
         if(!is_null($scope)) {
@@ -110,8 +112,10 @@ class Client extends Base
     {
         //argument testing
         Argument::i()
-            ->test(1, 'string')	//argument 1 must be a string
-            ->test(2, 'bool');  //argument 2 must be a boolean
+			//argument 1 must be a string
+            ->test(1, 'string')	
+			//argument 2 must be a boolean
+            ->test(2, 'bool');  
 
         //if you want to refresh a token only
         if($refreshToken) {

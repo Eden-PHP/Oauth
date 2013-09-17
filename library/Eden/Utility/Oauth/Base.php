@@ -102,7 +102,7 @@ class Base extends UtilityBase
             return str_replace('%7E', '~', rawurlencode($string));
         }
 
-        return NULL;
+        return null;
     }
 
     /**

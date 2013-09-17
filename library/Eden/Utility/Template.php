@@ -21,7 +21,7 @@ class Template extends Base
 	const ENGINE_PATTERN = '!{([@$#])([A-Za-z0-9:_]+)}|{([A-Za-z:_\!][A-Za-z0-9:_]*)(\s*,(.+?))?(/}|}(.*?){/\\3})!s';
     protected $data = array();
 	
-	private $callback = NULL;
+	private $callback = null;
 	
     /**
      * Sets template variables
@@ -58,12 +58,14 @@ class Template extends Base
 	 * @param callable|null callback to be used when key does not exist in data
 	 * @return string
 	 */
-	public function parseEngine($template, $callback = NULL) 
+	public function parseEngine($template, $callback = null) 
 	{
 		//argument test
         Argument::i()
-			->test(1, 'string')				//argument 1 must be a string
-			->test(2, 'callable', 'null');	//argument 2 must be callable or null
+			//argument 1 must be a string
+			->test(1, 'string')				
+			//argument 2 must be callable or null
+			->test(2, 'callable', 'null');	
 		
 		$this->callback = $callback;
 		
@@ -101,20 +103,28 @@ class Template extends Base
     public function parsePhp($___file, $___evalString = false) 
     {
         Argument::i()
-            ->test(1, $___file, 'string')      //argument 1 must be a string
-            ->test(2, $___evalString, 'bool'); //argument 2 must be a boolean
-
-        extract($this->data, EXTR_SKIP);     // Extract the values to a local namespace
+			//argument 1 must be a string
+            ->test(1, $___file, 'string')      
+			//argument 2 must be a boolean
+            ->test(2, $___evalString, 'bool'); 
+		
+		// Extract the values to a local namespace
+        extract($this->data, EXTR_SKIP);     
 
         if($___evalString) {
             return eval('?>'.$___file.'<?php;');
         }
-
-        ob_start();                            // Start output buffering
-        include $___file;                    // Include the template file
-        $___contents = ob_get_contents();    // Get the contents of the buffer
-        ob_end_clean();                        // End buffering and discard
-        return $___contents;                // Return the contents
+		
+		// Start output buffering
+        ob_start();                            
+		// Include the template file
+        include $___file;                    
+		// Get the contents of the buffer
+        $___contents = ob_get_contents();    
+		// End buffering and discard
+        ob_end_clean();                        
+		// Return the contents
+        return $___contents;                
     }
 	
 	/**
@@ -134,7 +144,7 @@ class Template extends Base
 						return call_user_func($this->callback, $matches[2], $matches[1]);
 					}
 					
-					return NULL;
+					return null;
 				}
 				
 				//if count
@@ -162,7 +172,7 @@ class Template extends Base
 						return call_user_func($this->callback, $matches[3], '$', $args);
 					}
 					
-					return NULL;
+					return null;
 				}
 				
 				return $this->data[$matches[3]];
@@ -176,7 +186,7 @@ class Template extends Base
 					|| !$this->data[$key] 
 					|| !count($this->data[$key])) {
 						//return blank
-						return NULL;
+						return null;
 					}
 					
 					//just blind pass
@@ -192,7 +202,7 @@ class Template extends Base
 						return call_user_func($this->callback, $matches[3], $matches[7], $args);
 					}
 					
-					return NULL;
+					return null;
 				}
 				
 				$rows = array();
@@ -209,7 +219,7 @@ class Template extends Base
 				
 				return implode("\n", $rows);
 			default:
-				return NULL;
+				return null;
 		}
 	}
 }

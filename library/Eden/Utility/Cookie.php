@@ -195,15 +195,22 @@ class Cookie extends Base implements \ArrayAccess, \Iterator
         $secure = false,
         $httponly = false)
     {
-        //argment test
+        //argument test
         Argument::i()
-            ->test(1, 'string')                    //argument 1 must be a string
-            ->test(2, 'string', 'numeric', 'null') //argument 2 must be a string,numeric or null
-            ->test(3, 'int')                       //argument 3 must be a integer
-            ->test(4, 'string', 'null')            //argument 4 must be a string or null
-            ->test(5, 'string', 'null')            //argument 5 must be a string or null
-            ->test(6, 'bool')                      //argument 6 must be a boolean
-            ->test(7, 'bool');                     //argument 7 must be a boolean
+			//argument 1 must be a string
+            ->test(1, 'string')                    
+			//argument 2 must be a string,numeric or null
+            ->test(2, 'string', 'numeric', 'null') 
+			//argument 3 must be a integer
+            ->test(3, 'int')                       
+			//argument 4 must be a string or null
+            ->test(4, 'string', 'null')            
+			//argument 5 must be a string or null
+            ->test(5, 'string', 'null')            
+			//argument 6 must be a boolean
+            ->test(6, 'bool')                      
+			//argument 7 must be a boolean
+            ->test(7, 'bool');                     
 
         $_COOKIE[$key] = $data;
 
@@ -231,11 +238,16 @@ class Cookie extends Base implements \ArrayAccess, \Iterator
     {
         //argment test
         Argument::i()
-            ->test(2, 'int')                       //argument 3 must be a integer
-            ->test(3, 'string', 'null')            //argument 4 must be a string or null
-            ->test(4, 'string', 'null')            //argument 5 must be a string or null
-            ->test(5, 'bool')                      //argument 6 must be a boolean
-            ->test(6, 'bool');                     //argument 7 must be a boolean
+			//argument 2 must be a integer
+            ->test(2, 'int')                       
+			//argument 3 must be a string or null
+            ->test(3, 'string', 'null')            
+			//argument 4 must be a string or null
+            ->test(4, 'string', 'null')            
+			//argument 5 must be a boolean
+            ->test(5, 'bool')                      
+			//argument 6 must be a boolean
+            ->test(6, 'bool');                     
 
         foreach($data as $key => $value) {
             $this->set($key, $value, $expires, $path, $domain, $secure, $httponly);
@@ -258,11 +270,16 @@ class Cookie extends Base implements \ArrayAccess, \Iterator
     {
         //argment test
         Argument::i()
-            ->test(1, 'string')                    //argument 1 must be a string
-            ->test(2, 'string', 'numeric', 'null') //argument 2 must be a string,numeric or null
-            ->test(3, 'int')                       //argument 3 must be a integer
-            ->test(4, 'string', 'null')            //argument 4 must be a string or null
-            ->test(5, 'string', 'null');           //argument 5 must be a string or null
+			//argument 1 must be a string
+            ->test(1, 'string')                    
+			//argument 2 must be a string,numeric or null
+            ->test(2, 'string', 'numeric', 'null') 
+			//argument 3 must be a integer
+            ->test(3, 'int')                       
+			//argument 4 must be a string or null
+            ->test(4, 'string', 'null')            
+			//argument 5 must be a string or null
+            ->test(5, 'string', 'null');           
 
         return $this->set($key, $data, $expires, $path, $domain, true, false);
     }
@@ -280,9 +297,12 @@ class Cookie extends Base implements \ArrayAccess, \Iterator
     {
         //argment test
         Argument::i()
-            ->test(2, 'int')              //argument 3 must be a integer
-            ->test(3, 'string', 'null')   //argument 4 must be a string or null
-            ->test(4, 'string', 'null');  //argument 5 must be a string or null
+			//argument 2 must be a integer
+            ->test(2, 'int')              
+			//argument 3 must be a string or null
+            ->test(3, 'string', 'null')   
+			//argument 4 must be a string or null
+            ->test(4, 'string', 'null');  
 
         $this->setData($data, $expires, $path, $domain, true, false);
         return $this;

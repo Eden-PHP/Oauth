@@ -40,8 +40,10 @@ abstract class Base extends UtilityBase
     public function __call($name, $args) 
     {
         Argument::i()
-            ->test(1, 'string') //argument 1 must be a string
-            ->test(2, 'array'); //argument 2 must be an array
+			//argument 1 must be a string
+            ->test(1, 'string') 
+			//argument 2 must be an array
+            ->test(2, 'array'); 
 
         $type = $this->getMethodType($name);
 

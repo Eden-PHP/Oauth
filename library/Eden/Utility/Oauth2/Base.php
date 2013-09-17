@@ -32,15 +32,15 @@ abstract class Base extends UtilityBase
     const TYPE = 'Content-Type';
     const REQUEST = 'application/x-www-form-urlencoded';
 
-    protected $client = NULL;
+    protected $client = null;
     protected $meta = array();
-    protected $secret = NULL;
-    protected $redirect = NULL;
-    protected $state = NULL;
-    protected $scope = NULL;
-    protected $display	= NULL;
-    protected $requestUrl = NULL;
-    protected $accessUrl = NULL;
+    protected $secret = null;
+    protected $redirect = null;
+    protected $state = null;
+    protected $scope = null;
+    protected $display	= null;
+    protected $requestUrl = null;
+    protected $accessUrl = null;
 
     protected $responseType = self::CODE;
     protected $approvalPrompt = self::AUTO;
@@ -59,11 +59,16 @@ abstract class Base extends UtilityBase
     {
         //argument test
         Argument::i()
-            ->test(1, 'string')	//argument 1 must be a string
-            ->test(2, 'string')	//argument 2 must be a string
-            ->test(3, 'url')    //argument 3 must be a url
-            ->test(4, 'url')    //argument 4 must be a url
-            ->test(5, 'url');   //argument 5 must be a url
+			//argument 1 must be a string
+            ->test(1, 'string')	
+			//argument 2 must be a string
+            ->test(2, 'string')	
+			//argument 3 must be a url
+            ->test(3, 'url')    
+			//argument 4 must be a url
+            ->test(4, 'url')    
+			//argument 5 must be a url
+            ->test(5, 'url');   
 
         $this->client       = $client;
         $this->secret       = $secret;
@@ -175,7 +180,7 @@ abstract class Base extends UtilityBase
      * @param string|null
      *
      */
-    abstract public function getLoginUrl($scope = NULL, $display = NULL);
+    abstract public function getLoginUrl($scope = null, $display = null);
 
     /**
      * Returns website login url
@@ -225,7 +230,7 @@ abstract class Base extends UtilityBase
      * @param *bool
      * @return string
      */
-    protected function generateAccess($query, $code = NULL, $refreshToken)
+    protected function generateAccess($query, $code = null, $refreshToken)
     {
         //if there is a code
         if(!is_null($code)) {
