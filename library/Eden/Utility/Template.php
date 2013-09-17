@@ -18,8 +18,11 @@ namespace Eden\Utility;
  */
 class Template extends Base 
 {
+	const ENGINE_PATTERN = '!{([@$#])([A-Za-z0-9:_]+)}|{([A-Za-z:_\!][A-Za-z0-9:_]*)(\s*,(.+?))?(/}|}(.*?){/\\3})!s';
     protected $data = array();
-
+	
+	private $callback = NULL;
+	
     /**
      * Sets template variables
      *
@@ -41,6 +44,34 @@ class Template extends Base
 
         return $this;
     }
+	
+	/**
+	 * Engine Parser. This parser also cases for lazy loaded variables.
+	 * One problem with template engines is that it requires you to preload
+	 * variables. This becomes problematic when your template requires a 
+	 * plethora of MySQL, Facebook, Twitter calls for example. Sometimes
+	 * it's just best to wait till it's needed.
+	 * ex {$title}
+	 * ex {products}{$title}{/products}
+	 *
+	 * @param string template
+	 * @param callable|null callback to be used when key does not exist in data
+	 * @return string
+	 */
+	public function parseEngine($template, $callback = NULL) 
+	{
+		//argument test
+        Argument::i()
+			->test(1, 'string')				//argument 1 must be a string
+			->test(2, 'callable', 'null');	//argument 2 must be callable or null
+		
+		$this->callback = $callback;
+		
+		return preg_replace_callback(
+			self::ENGINE_PATTERN, 
+			array($this, 'engineParseResults'), 
+			$template);
+	}
 
     /**
      * Simple string replace template parser
@@ -85,4 +116,100 @@ class Template extends Base
         ob_end_clean();                        // End buffering and discard
         return $___contents;                // Return the contents
     }
+	
+	/**
+	 * Recursively parses template variables 
+	 * to eventually return a string considering
+	 * binded values
+	 *
+	 * @param array
+	 * @return string|null
+	 */
+	protected function engineParseResults($matches) 
+	{
+		switch(count($matches)) {
+			case 3:
+				if(!isset($this->data[$matches[2]])) {
+					if($this->callback) {
+						return call_user_func($this->callback, $matches[2], $matches[1]);
+					}
+					
+					return NULL;
+				}
+				
+				//if count
+				if($matches[1] == '#') {
+					switch(true) {
+						case is_numeric($this->data[$matches[2]]):	
+							return $this->data[$matches[2]];
+						case is_string($this->data[$matches[2]]):	
+							return strlen($this->data[$matches[2]]);
+						case is_array($this->data[$matches[2]]):	
+							return count($this->data[$matches[2]]);
+						default: 		
+							return 0;	
+					}
+				}
+				
+				return $this->data[$matches[2]];
+			case 7:
+				//parse args
+				$args = str_replace(array('  ',',', ' '),array(' ','', '&'), trim($matches[5]));
+				parse_str($args, $args);
+				
+				if(!isset($this->data[$matches[3]])) {
+					if($this->callback) {
+						return call_user_func($this->callback, $matches[3], '$', $args);
+					}
+					
+					return NULL;
+				}
+				
+				return $this->data[$matches[3]];
+			case 8:
+				//if count test
+				if(strpos($matches[3], '!') === 0) {
+					$key = substr($matches[3], 1);
+					
+					//if not exists
+					if(!isset($this->data[$key]) 
+					|| !$this->data[$key] 
+					|| !count($this->data[$key])) {
+						//return blank
+						return NULL;
+					}
+					
+					//just blind pass
+					return self::i()->set($this->data)->parseEngine($matches[7]);
+				}
+				
+				//parse args
+				$args = str_replace(array('  ',',', ' '),array(' ','', '&'), trim($matches[5]));
+				parse_str($args, $args);
+				
+				if(!isset($this->data[$matches[3]])) {
+					if($this->callback) {
+						return call_user_func($this->callback, $matches[3], $matches[7], $args);
+					}
+					
+					return NULL;
+				}
+				
+				$rows = array();
+				foreach($this->data[$matches[3]] as $j => $row) {
+					if(!is_array($row)) {
+						$rows[] = self::i()
+						->set($this->data[$matches[3]])
+						->parseEngine($matches[7]);
+						break;
+					}
+					
+					$rows[] = self::i()->set($row)->parseEngine($matches[7]);
+				}
+				
+				return implode("\n", $rows);
+			default:
+				return NULL;
+		}
+	}
 }
