@@ -77,7 +77,6 @@ class Collection extends Base implements \ArrayAccess, \Iterator, \Serializable,
 
         //for an array of models the method might exist
         //we should loop and check for a valid method
-
         foreach($this->list as $i => $row) {
             //if no method exists
             if(!method_exists($row, $name)) {
@@ -88,8 +87,10 @@ class Collection extends Base implements \ArrayAccess, \Iterator, \Serializable,
 
             //just call the method
             //let the model worry about the rest
-            $row->callThis($name, $args);
+            $row->call($name, $args);
         }
+		
+		
 
         //if found, it means something happened
         if($found) {
@@ -156,7 +157,7 @@ class Collection extends Base implements \ArrayAccess, \Iterator, \Serializable,
         //if it's an array
         if(is_array($row)) {
             //make it a model
-            $model = $this->model;
+            $model = trim(str_replace('\\', '_', $this->model), '_');
             $row = $this->$model($row);
         }
 
