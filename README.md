@@ -1,4 +1,4 @@
-Utility
+Oauth
 =======
 
-Utility methods for the Eden PHP Library
+Oauth methods for the Eden PHP Library
