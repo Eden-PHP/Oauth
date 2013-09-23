@@ -1,7 +1,10 @@
+<<<<<<< HEAD
 {
     "name": "eden-php/oauth",
     "type": "library",
     "description": "Oauth methods for Eden Core",
+<<<<<<< HEAD
+=======
     "keywords": ["eden", "library"],
     "homepage": "http://eden-php.com",
     "license": "MIT",
@@ -19,4 +22,28 @@
     "autoload": {
          "psr-0": { "Eden\\": "library/" }
     }
+=======
+{
+    "name": "eden-php/oauth",
+    "type": "library",
+    "description": "Oauth methods for Eden Core",
+>>>>>>> 402543059d9fcbf33d83a439e7936ca297576458
+    "keywords": ["eden", "library"],
+    "homepage": "http://eden-php.com",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Christian Blanquera",
+            "email": "cblanquera@openovate.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.1",
+		"eden-php/core": ">=1.0.0",
+        "eden-php/curl": ">=1.0.0"
+    },
+    "autoload": {
+         "psr-0": { "Eden\\": "library/" }
+    }
+>>>>>>> e7c7a60f61a44dfffc40cf69a2c30337d5ce2131
 }
