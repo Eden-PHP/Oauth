@@ -1,5 +1,5 @@
 <?php //-->
-namespace Eden\Utility;
+namespace Eden\Oauth;
 
 function session_start() {
 	return 1;
