@@ -37,11 +37,16 @@ class Oauth2 extends Base
     {
         //argument test
         Argument::i()
-            ->test(1, 'string')	//argument 1 must be a string
-            ->test(2, 'string')	//argument 2 must be a url
-            ->test(3, 'url')    //argument 3 must be a url
-            ->test(4, 'url')    //argument 4 must be a url
-            ->test(5, 'url');   //argument 5 must be a url
+			//argument 1 must be a string
+            ->test(1, 'string')	
+			//argument 2 must be a url
+            ->test(2, 'string')	
+			//argument 3 must be a url
+            ->test(3, 'url')    
+			//argument 4 must be a url
+            ->test(4, 'url')    
+			//argument 5 must be a url
+            ->test(5, 'url');   
 
         return Client::i($client, $secret, $redirect, $requestUrl, $accessUrl);
     }
@@ -60,11 +65,16 @@ class Oauth2 extends Base
     {
         //argument test
         Argument::i()
-            ->test(1, 'string')	//argument 1 must be a string
-            ->test(2, 'string')	//argument 2 must be a url
-            ->test(3, 'url')    //argument 3 must be a url
-            ->test(4, 'url')    //argument 4 must be a url
-            ->test(5, 'url');   //argument 5 must be a url
+			//argument 1 must be a string
+            ->test(1, 'string')	
+			//argument 2 must be a url
+            ->test(2, 'string')	
+			//argument 3 must be a url
+            ->test(3, 'url')    
+			//argument 4 must be a url
+            ->test(4, 'url')    
+			//argument 5 must be a url
+            ->test(5, 'url');   
 
         return Desktop::i($client, $secret, $redirect, $requestUrl, $accessUrl);
     }

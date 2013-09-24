@@ -7,7 +7,7 @@
  * distributed with this package.
  */
 
-class Eden_Tests_Oauth_Oauth2_BaseTest extends \PHPUnit_Framework_TestCase
+class Eden_Oauth_Tests_Oauth_Oauth2_BaseTest extends \PHPUnit_Framework_TestCase
 {
     public function testGetMeta()
     {

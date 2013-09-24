@@ -9,7 +9,7 @@
 
 namespace Eden\Oauth;
 
-use Eden\Oauth\Oauth\Consumer;
+use Eden\Oauth\Oauth1\Consumer;
 
 /**
  * Oauth Factory; A summary of 2-legged and 3-legged OAuth
@@ -20,7 +20,7 @@ use Eden\Oauth\Oauth\Consumer;
  * @package Oauth
  * @author Christian Blanquera cblanquera@openovate.com
  */
-class Oauth extends Base 
+class Oauth1 extends Base 
 {
 	const INSTANCE = 1;
 	
@@ -67,8 +67,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -127,8 +127,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -183,8 +183,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -227,8 +227,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null 
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -275,8 +275,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null 
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -335,8 +335,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -391,8 +391,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null 
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -435,8 +435,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -483,8 +483,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null 
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -543,8 +543,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -599,8 +599,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null 
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -643,8 +643,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -691,8 +691,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -751,8 +751,8 @@ class Oauth extends Base
 		$tokenSecret, 
 		array $query = array(), 
 		$realm = null, 
-		$verifier = null) 
-	{
+		$verifier = null 
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -807,8 +807,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string
@@ -851,8 +851,8 @@ class Oauth extends Base
 		$key, 
 		$secret, 
 		array $query = array(), 
-		$realm = null) 
-	{
+		$realm = null
+	) {
 		//argument test
 		Argument::i()
 			//Argument 1 must be a string

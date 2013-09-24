@@ -9,7 +9,7 @@
  * distributed with this package.
  */
 
-class Eden_Tests_Oauth_Oauth2_DesktopTest extends \PHPUnit_Framework_TestCase {
+class Eden_Oauth_Tests_Oauth_Oauth2_DesktopTest extends \PHPUnit_Framework_TestCase {
 
     public function testGetLoginUrl() {
         $clientId = '12345';
@@ -17,7 +17,7 @@ class Eden_Tests_Oauth_Oauth2_DesktopTest extends \PHPUnit_Framework_TestCase {
         $encodedUrl = urlencode($url);
 
         $response = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->desktop($clientId, 'www.google.com', $url, $url, $url)
                 ->getLoginUrl();
 
@@ -31,7 +31,7 @@ class Eden_Tests_Oauth_Oauth2_DesktopTest extends \PHPUnit_Framework_TestCase {
         $url = 'http://www.google.com';
 
         $response = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->desktop($clientId, 'www.google.com', $url, $url, $url)
                 ->getAccess('codeless');
 

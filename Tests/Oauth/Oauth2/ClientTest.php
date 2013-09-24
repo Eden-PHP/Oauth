@@ -9,14 +9,14 @@
  * distributed with this package.
  */
 
-class Eden_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCase {
+class Eden_Oauth_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCase {
 
     public function testForOffline() {
         $clientId = '12345';
         $url = 'http://www.google.com';
 
         $class = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->client($clientId, 'www.google.com', $url, $url, $url)
                 ->forOffline();
 
@@ -29,7 +29,7 @@ class Eden_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCase {
         $url = 'http://www.google.com';
 
         $class = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->client($clientId, 'www.google.com', $url, $url, $url)
                 ->forOnline();
 
@@ -42,7 +42,7 @@ class Eden_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCase {
         $url = 'http://www.google.com';
 
         $class = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->client($clientId, 'www.google.com', $url, $url, $url)
                 ->approvalPromptToAuto();
 
@@ -56,7 +56,7 @@ class Eden_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCase {
         $encodedUrl = urlencode($url);
 
         $response = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->client($clientId, 'www.google.com', $url, $url, $url)
                 ->forOnline()
                 ->approvalPromptToAuto()
@@ -74,7 +74,7 @@ class Eden_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCase {
         $url = 'http://www.google.com';
 
         $response = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->client($clientId, 'www.google.com', $url, $url, $url)
                 ->forOnline()
                 ->approvalPromptToAuto()

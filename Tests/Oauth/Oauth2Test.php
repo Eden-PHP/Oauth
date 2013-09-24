@@ -9,11 +9,11 @@
  * distributed with this package.
  */
 
-class Eden_Tests_Oauth_Oauth2Test extends \PHPUnit_Framework_TestCase {
+class Eden_Oauth_Tests_Oauth_Oauth2Test extends \PHPUnit_Framework_TestCase {
 
     public function testClient() {
         $class = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->client('12345', 'www.google.com', 'http://www.google.com', 'http://www.google.com', 'http://www.google.com');
 
         $this->assertInstanceOf('Eden\\Oauth\\Oauth2\\Client', $class);
@@ -21,7 +21,7 @@ class Eden_Tests_Oauth_Oauth2Test extends \PHPUnit_Framework_TestCase {
 
     public function testDesktop() {
         $class = eden('oauth')
-                ->oauth2()
+                ->v2()
                 ->desktop('12345', 'www.google.com', 'http://www.google.com', 'http://www.google.com', 'http://www.google.com');
 
         $this->assertInstanceOf('Eden\\Oauth\\Oauth2\\Desktop', $class);
