@@ -13,8 +13,8 @@
     ],
     "require": {
         "php": ">=5.3.1",
-		"eden-php/core": "1.*",
-        "eden-php/curl": "1.*"
+		"eden/core": "1.*",
+        "eden/curl": "1.*"
     },
     "autoload": {
          "psr-0": { "Eden\\Oauth\\": "" }
