@@ -1,5 +1,5 @@
 {
-    "name": "eden-php/oauth",
+    "name": "eden/oauth",
     "type": "library",
     "description": "Eden Oauth1 and Oauth2 component",
     "keywords": ["eden", "library"],
