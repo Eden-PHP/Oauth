@@ -9,6 +9,9 @@
  
 namespace Eden\Oauth\Oauth1;
 
+use Eden\Oauth\Argument;
+use Eden\Curl\Base as Curl;
+
 /**
  * Oauth consumer methods
  *
