@@ -16,8 +16,9 @@ use Eden\Oauth\Argument;
  *
  * @vendor Eden
  * @package Oauth
- * @author Christian Symon M. Buenavista sbuenavista@openovate.com
- * @author Christian Blanquera cblanquera@openovate.com
+ * @author Christian Symon M. Buenavista <sbuenavista@openovate.com>
+ * @author Christian Blanquera <cblanquera@openovate.com>
+ * @author Ian Mark Muninio <ianmuninio@openovate.com>
  */
 class Client extends Base 
 {
@@ -29,9 +30,9 @@ class Client extends Base
     protected $grantType = 'authorization_code';
 
     /**
-     * Set auth for offline access
+     * Sets auth for offline access.
      *
-     * @return this
+     * @return \Eden\Oauth\Oauth2\Client
      */
     public function forOffline()
     {
@@ -41,9 +42,9 @@ class Client extends Base
     }
 
     /**
-     * Set auth for online access
+     * Sets auth for online access.
      *
-     * @return this
+     * @return \Eden\Oauth\Oauth2\Client
      */
     public function forOnline()
     {
@@ -53,9 +54,9 @@ class Client extends Base
     }
 
     /**
-     * Set auth for online access
+     * Sets approval prompt to auto.
      *
-     * @return this
+     * @return \Eden\Oauth\Oauth2\Client
      */
     public function approvalPromptToAuto()
     {
@@ -63,9 +64,45 @@ class Client extends Base
 
         return $this;
     }
+    
+    /**
+     * Sets approval prompt to force.
+     * 
+     * @return \Eden\Oauth\Oauth2\Client
+     */
+    public function approvalPromptToFore()
+    {
+        $this->approvalPrompt = self::FORCE;
+
+        return $this;
+    }
+    
+    /**
+     * Sets response type to code.
+     * 
+     * @return \Eden\Oauth\Oauth2\Client
+     */
+    public function responseTypeToCode()
+    {
+        $this->responseType = self::CODE;
+
+        return $this;
+    }
+    
+    /**
+     * Sets response type to token.
+     * 
+     * @return \Eden\Oauth\Oauth2\Client
+     */
+    public function responseTypeToToken()
+    {
+        $this->responseType = self::TOKEN;
+
+        return $this;
+    }
 
     /**
-     * Returns website login url
+     * Returns website login url.
      *
      * @param string|null
      * @param string|null
@@ -103,7 +140,7 @@ class Client extends Base
     }
 
     /**
-     * Returns website login url
+     * Returns website login url.
      *
      * @param string*
      * @return array
