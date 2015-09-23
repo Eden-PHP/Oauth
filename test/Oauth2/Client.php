@@ -1,6 +1,4 @@
-<?php
-
-//-->
+<?php //-->
 /*
  * This file is part of the Oauth package of the Eden PHP Library.
  * (c) 2013-2014 Openovate Labs
@@ -8,10 +6,11 @@
  * Copyright and license information can be found at LICENSE
  * distributed with this package.
  */
+class EdenOauthOauth2ClientTest extends PHPUnit_Framework_TestCase 
+{
 
-class Eden_Oauth_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCase {
-
-    public function testForOffline() {
+    public function testForOffline() 
+	{
         $clientId = '12345';
         $url = 'http://www.google.com';
 
@@ -24,7 +23,8 @@ class Eden_Oauth_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCa
         $this->assertContains('access_type=offline', $class->getLoginUrl());
     }
 
-    public function testForOnline() {
+    public function testForOnline() 
+	{
         $clientId = '12345';
         $url = 'http://www.google.com';
 
@@ -37,7 +37,8 @@ class Eden_Oauth_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCa
         $this->assertContains('access_type=online', $class->getLoginUrl());
     }
 
-    public function testApprovalPromptToAuto() {
+    public function testApprovalPromptToAuto() 
+	{
         $clientId = '12345';
         $url = 'http://www.google.com';
 
@@ -50,7 +51,8 @@ class Eden_Oauth_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCa
         $this->assertContains('approval_prompt=auto', $class->getLoginUrl());
     }
 
-    public function testGetLoginUrl() {
+    public function testGetLoginUrl() 
+	{
         $clientId = '12345';
         $url = 'http://www.google.com';
         $encodedUrl = urlencode($url);
@@ -69,7 +71,8 @@ class Eden_Oauth_Tests_Oauth_Oauth2_ClientTest extends \PHPUnit_Framework_TestCa
                 '&approval_prompt=auto', $response);
     }
 
-    public function testGetAccess() {
+    public function testGetAccess() 
+	{
         $clientId = '12345';
         $url = 'http://www.google.com';
 

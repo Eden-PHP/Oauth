@@ -7,9 +7,7 @@
  * distributed with this package.
  */
 
-namespace Eden\Oauth;
-
-use Eden\Oauth\Oauth1\Consumer;
+namespace Eden\Oauth\Oauth1;
 
 /**
  * Oauth Factory; A summary of 2-legged and 3-legged OAuth
@@ -17,7 +15,7 @@ use Eden\Oauth\Oauth1\Consumer;
  * OAuth server.
  *
  * @vendor Eden
- * @package Oauth
+ * @package oauth
  * @author Christian Blanquera cblanquera@openovate.com
  */
 class Oauth1 extends Base 

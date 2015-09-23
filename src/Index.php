@@ -27,7 +27,7 @@ class Factory extends Base
      */
     public function v1()
     {
-        return Oauth1::i();
+        return Oauth1\Index::i();
     }
 		
     /**
@@ -37,6 +37,6 @@ class Factory extends Base
      */
     public function v2()
     {
-        return Oauth2::i();
+        return Oauth2\Index::i();
     }
 }

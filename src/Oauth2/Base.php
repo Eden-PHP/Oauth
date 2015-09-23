@@ -10,8 +10,7 @@
 namespace Eden\Oauth\Oauth2;
 
 use Eden\Oauth\Argument;
-use Eden\Curl\Base as Curl;
-use Eden\Oauth\Base as OauthBase;
+use Eden\Curl\Index as Curl;
 
 /**
  * Oauth2 abstract class
@@ -21,7 +20,7 @@ use Eden\Oauth\Base as OauthBase;
  * @author Christian Symon M. Buenavista sbuenavista@openovate.com
  * @author Christian Blanquera cblanquera@openovate.com
  */
-abstract class Base extends OauthBase 
+abstract class Base extends Eden\Oauth\Base 
 {
     const CODE = 'code';
     const TOKEN = 'token';
@@ -220,7 +219,6 @@ abstract class Base extends OauthBase
         //generate a login url
         return $this->requestUrl.'?'.http_build_query($query);
     }
-
 
     /**
      * Returns an access token from server

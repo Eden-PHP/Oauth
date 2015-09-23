@@ -18,9 +18,9 @@ use Eden\Core\Base as CoreBase;
  * loading patterns.
  *
  * @vendor Eden
- * @package Oauth
+ * @package oauth
  * @author Christian Blanquera cblanquera@openovate.com
  */
-class Base extends CoreBase
+class Base extends \Eden\Core\Base
 {
 }

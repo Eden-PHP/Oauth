@@ -9,11 +9,16 @@
          processIsolation="false"
          stopOnFailure="false"
          syntaxCheck="false"
-         bootstrap="Tests/bootstrap.php"
+         bootstrap="test/bootstrap.php"
 >
   <testsuites>
     <testsuite name="Eden Oauth Test Suite">
-      <directory>./Tests/Oauth</directory>
+      <file>test/Index.php</file>
+      <file>test/Oauth1/Index.php</file>
+      <file>test/Oauth1/Consumer.php</file>
+      <file>test/Oauth2/Index.php</file>
+      <file>test/Oauth2/Client.php</file>
+      <file>test/Oauth2/Desktop.php</file>
     </testsuite>
   </testsuites>
 

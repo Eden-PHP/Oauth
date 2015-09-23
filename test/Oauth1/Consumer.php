@@ -6,16 +6,9 @@
  * Copyright and license information can be found at LICENSE
  * distributed with this package.
  */
-
-class Eden_Oauth_Tests_Oauth_Oauth2_ServerTest extends \PHPUnit_Framework_TestCase
+class EdenOauthOauth1ConsumerTest extends PHPUnit_Framework_TestCase
 {
-    public function testClient()
+    public function testSet() 
     {
-
-    }
-
-    public function testDesktop()
-    {
-
     }
 }
