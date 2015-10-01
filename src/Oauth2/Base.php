@@ -10,6 +10,7 @@
 namespace Eden\Oauth\Oauth2;
 
 use Eden\Oauth\Argument;
+use Eden\Oauth\Exception;
 use Eden\Curl\Index as Curl;
 
 /**
@@ -20,7 +21,7 @@ use Eden\Curl\Index as Curl;
  * @author Christian Symon M. Buenavista sbuenavista@openovate.com
  * @author Christian Blanquera cblanquera@openovate.com
  */
-abstract class Base extends Eden\Oauth\Base 
+abstract class Base extends \Eden\Oauth\Base 
 {
     const CODE = 'code';
     const TOKEN = 'token';

@@ -10,6 +10,7 @@
 namespace Eden\Oauth\Oauth2;
 
 use Eden\Oauth\Argument;
+use Eden\Oauth\Exception;
 
 /**
  * Oauth2 client class

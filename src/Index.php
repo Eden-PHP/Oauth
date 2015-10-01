@@ -16,7 +16,7 @@ namespace Eden\Oauth;
  * @package Core
  * @author Christian Blanquera cblanquera@openovate.com
  */
-class Factory extends Base
+class Index extends Base
 {
     const INSTANCE = 1;
 	
