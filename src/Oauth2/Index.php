@@ -7,10 +7,11 @@
  * distributed with this package.
  */
 
-namespace Eden\Oauth;
+namespace Eden\Oauth\Oauth2;
 
-use Eden\Oauth\Oauth2\Client;
-use Eden\Oauth\Oauth2\Desktop;
+use Eden\Oauth\Base;
+use Eden\Oauth\Argument;
+use Eden\Oauth\Exception;
 
 /**
  * Oauth2 Factory class
@@ -19,7 +20,7 @@ use Eden\Oauth\Oauth2\Desktop;
  * @package Oauth
  * @author Christian Blanquera cblanquera@openovate.com
  */
-class Oauth2 extends Base 
+class Index extends Base  
 {
     const INSTANCE = 1;
 

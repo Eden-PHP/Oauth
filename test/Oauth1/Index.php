@@ -6,8 +6,7 @@
  * Copyright and license information can be found at LICENSE
  * distributed with this package.
  */
- 
-class Eden_Oauth_Tests_Oauth_Oauth1Test extends \PHPUnit_Framework_TestCase
+class EdenOauthOauth1IndexTest extends PHPUnit_Framework_TestCase
 {
     public function testSet() 
     {

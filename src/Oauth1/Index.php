@@ -7,9 +7,11 @@
  * distributed with this package.
  */
 
-namespace Eden\Oauth;
+namespace Eden\Oauth\Oauth1;
 
-use Eden\Oauth\Oauth1\Consumer;
+use Eden\Oauth\Base;
+use Eden\Oauth\Argument;
+use Eden\Oauth\Exception;
 
 /**
  * Oauth Factory; A summary of 2-legged and 3-legged OAuth
@@ -17,10 +19,10 @@ use Eden\Oauth\Oauth1\Consumer;
  * OAuth server.
  *
  * @vendor Eden
- * @package Oauth
+ * @package oauth
  * @author Christian Blanquera cblanquera@openovate.com
  */
-class Oauth1 extends Base 
+class Index extends Base  
 {
 	const INSTANCE = 1;
 	

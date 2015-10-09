@@ -10,6 +10,7 @@
 namespace Eden\Oauth\Oauth1;
 
 use Eden\Oauth\Argument;
+use Eden\Oauth\Exception;
 use Eden\Curl\Base as Curl;
 
 /**

@@ -9,16 +9,14 @@
 
 namespace Eden\Oauth\Oauth1;
 
-use Eden\Oauth\Base as OauthBase;
-
 /**
  *  Trigger when something is false
  *
  * @vendor Eden
- * @package Oauth
+ * @package oauth
  * @author Christian Blanquera cblanquera@openovate.com
  */
-class Base extends OauthBase 
+class Base extends \Eden\Oauth\Base 
 {
     const HMAC_SHA1 = 'HMAC-SHA1';
     const RSA_SHA1 	= 'RSA-SHA1';

@@ -9,8 +9,6 @@
 
 namespace Eden\Oauth;
 
-use Eden\Core\Exception as CoreException;
-
 /**
  * The base class for any class handling exceptions. Exceptions
  * allow an application to custom handle errors that would
@@ -20,9 +18,9 @@ use Eden\Core\Exception as CoreException;
  * started to where the program stopped.
  *
  * @vendor Eden
- * @package Oauth
+ * @package oauth
  * @author Christian Blanquera cblanquera@openovate.com
  */
-class Exception extends CoreException
+class Exception extends \Eden\Core\Exception
 {
 }
