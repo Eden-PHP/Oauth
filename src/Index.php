@@ -12,14 +12,15 @@ namespace Eden\Oauth;
 /**
  * Core Factory Class
  *
- * @vendor Eden
- * @package Core
- * @author Christian Blanquera cblanquera@openovate.com
+ * @vendor   Eden
+ * @package  Core
+ * @author   Christian Blanquera <cblanquera@openovate.com>
+ * @standard PSR-2
  */
 class Index extends Base
 {
     const INSTANCE = 1;
-	
+    
     /**
      * Returns the oauth class
      *
@@ -29,7 +30,7 @@ class Index extends Base
     {
         return Oauth1\Index::i();
     }
-		
+        
     /**
      * Returns the oauth2 class
      *

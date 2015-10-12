@@ -16,11 +16,12 @@ use Eden\Oauth\Exception;
 /**
  * Oauth2 Factory class
  *
- * @vendor Eden
- * @package Oauth
- * @author Christian Blanquera cblanquera@openovate.com
+ * @vendor   Eden
+ * @package  Oauth
+ * @author   Christian Blanquera <cblanquera@openovate.com>
+ * @standard PSR-2
  */
-class Index extends Base  
+class Index extends Base
 {
     const INSTANCE = 1;
 
@@ -32,22 +33,23 @@ class Index extends Base
      * @param *string Your callback url or where do you want to redirect the user after authentication
      * @param *string The request url,  can get through registration
      * @param *string The access url,  can get through registration
+     *
      * @return Eden\Oauth\Oauth\Client
      */
     public function client($client, $secret, $redirect, $requestUrl, $accessUrl)
     {
         //argument test
         Argument::i()
-			//argument 1 must be a string
-            ->test(1, 'string')	
-			//argument 2 must be a url
-            ->test(2, 'string')	
-			//argument 3 must be a url
-            ->test(3, 'url')    
-			//argument 4 must be a url
-            ->test(4, 'url')    
-			//argument 5 must be a url
-            ->test(5, 'url');   
+            //argument 1 must be a string
+            ->test(1, 'string')
+            //argument 2 must be a url
+            ->test(2, 'string')
+            //argument 3 must be a url
+            ->test(3, 'url')
+            //argument 4 must be a url
+            ->test(4, 'url')
+            //argument 5 must be a url
+            ->test(5, 'url');
 
         return Client::i($client, $secret, $redirect, $requestUrl, $accessUrl);
     }
@@ -60,23 +62,24 @@ class Index extends Base
      * @param *string Your callback url or where do you want to redirect the user after authentication
      * @param *string The request url,  can get through registration
      * @param *string The access url,  can get through registration
+     *
      * @return Eden\Oauth\Oauth2\Client
      */
     public function desktop($client, $secret, $redirect, $requestUrl, $accessUrl)
     {
         //argument test
         Argument::i()
-			//argument 1 must be a string
-            ->test(1, 'string')	
-			//argument 2 must be a url
-            ->test(2, 'string')	
-			//argument 3 must be a url
-            ->test(3, 'url')    
-			//argument 4 must be a url
-            ->test(4, 'url')    
-			//argument 5 must be a url
-            ->test(5, 'url');   
+            //argument 1 must be a string
+            ->test(1, 'string')
+            //argument 2 must be a url
+            ->test(2, 'string')
+            //argument 3 must be a url
+            ->test(3, 'url')
+            //argument 4 must be a url
+            ->test(4, 'url')
+            //argument 5 must be a url
+            ->test(5, 'url');
 
         return Desktop::i($client, $secret, $redirect, $requestUrl, $accessUrl);
     }
-} 
+}

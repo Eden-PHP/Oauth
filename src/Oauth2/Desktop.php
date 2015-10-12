@@ -15,11 +15,11 @@ use Eden\Oauth\Exception;
 /**
  * Oauth2 desktop class
  *
- * @vendor Eden
- * @package Oauth
+ * @vendor   Eden
+ * @package  Oauth
  * @author Christian Symon M. Buenavista sbuenavista@openovate.com
  */
-class Desktop extends Base 
+class Desktop extends Base
 {
     protected $responseType = self::CODE;
     protected $grantType = 'authorization_code';
@@ -29,25 +29,26 @@ class Desktop extends Base
      *
      * @param string|null
      * @param string|null
+     *
      * @return string
      */
     public function getLoginUrl($scope = null, $display = null)
     {
         //argument test
         Argument::i()
-			//argument 1 must be a string, array or null
-            ->test(1, 'string', 'array', 'null')	
-			//argument 2 must be a string, array or null
-            ->test(2, 'string', 'array', 'null');	
+            //argument 1 must be a string, array or null
+            ->test(1, 'string', 'array', 'null')
+            //argument 2 must be a string, array or null
+            ->test(2, 'string', 'array', 'null');
 
         //if scope in not null
-        if(!is_null($scope)) {
+        if (!is_null($scope)) {
             //lets set the scope
             $this->setScope($scope);
         }
 
         //if display in not null
-        if(!is_null($display)) {
+        if (!is_null($display)) {
             //lets set the display
             $this->setDisplay($display);
         }
@@ -66,6 +67,7 @@ class Desktop extends Base
      * Returns website login url
      *
      * @param string*
+     *
      * @return array
      */
     public function getAccess($code, $refreshToken = false)
@@ -75,10 +77,10 @@ class Desktop extends Base
 
         //populate fields
         $query = array(
-            'client_id'		=> $this->client,
-            'client_secret'	=> $this->secret,
-            'redirect_uri'	=> $this->redirect,
-            'grant_type'	=> $this->grantType);
+            'client_id'         => $this->client,
+            'client_secret'     => $this->secret,
+            'redirect_uri'  => $this->redirect,
+            'grant_type'    => $this->grantType);
 
         return $this->generateAccess($query, $code, $refreshToken);
     }

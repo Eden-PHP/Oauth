@@ -17,9 +17,10 @@ namespace Eden\Oauth;
  * outputs a trace (can be turned off) that shows where the problem
  * started to where the program stopped.
  *
- * @vendor Eden
- * @package oauth
- * @author Christian Blanquera cblanquera@openovate.com
+ * @vendor   Eden
+ * @package  oauth
+ * @author   Christian Blanquera <cblanquera@openovate.com>
+ * @standard PSR-2
  */
 class Exception extends \Eden\Core\Exception
 {

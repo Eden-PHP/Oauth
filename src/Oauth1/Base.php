@@ -12,20 +12,21 @@ namespace Eden\Oauth\Oauth1;
 /**
  *  Trigger when something is false
  *
- * @vendor Eden
- * @package oauth
- * @author Christian Blanquera cblanquera@openovate.com
+ * @vendor   Eden
+ * @package  oauth
+ * @author   Christian Blanquera <cblanquera@openovate.com>
+ * @standard PSR-2
  */
-class Base extends \Eden\Oauth\Base 
+class Base extends \Eden\Oauth\Base
 {
     const HMAC_SHA1 = 'HMAC-SHA1';
-    const RSA_SHA1 	= 'RSA-SHA1';
+    const RSA_SHA1  = 'RSA-SHA1';
     const PLAIN_TEXT = 'PLAINTEXT';
 
     const POST = 'POST';
     const GET = 'GET';
 
-    const OAUTH_VERSION	= '1.0';
+    const OAUTH_VERSION     = '1.0';
 
     /**
      * Generates an oauth standard query
@@ -38,7 +39,7 @@ class Base extends \Eden\Oauth\Base
      */
     protected function buildQuery($params, $separator = '&', $noQuotes = true, $subList = false)
     {
-        if(empty($params)) {
+        if (empty($params)) {
             return '';
         }
 
@@ -62,18 +63,18 @@ class Base extends \Eden\Oauth\Base
                 continue;
             }
 
-            if(!$noQuotes) {
+            if (!$noQuotes) {
                 $value = '"'.$value.'"';
             }
 
             $params[$key] = $value;
         }
 
-        if($subList) {
+        if ($subList) {
             return $params;
         }
 
-        foreach($params as $key => $value) {
+        foreach ($params as $key => $value) {
             $params[$key] = $key.'='.$value;
         }
 
@@ -84,12 +85,13 @@ class Base extends \Eden\Oauth\Base
      * Generates an oauth standard encoding
      *
      * @param string
+     *
      * @return string
      */
     protected function encode($string)
     {
         if (is_array($string)) {
-            foreach($string as $i => $value) {
+            foreach ($string as $i => $value) {
                 $string[$i] = $this->encode($value);
             }
 
@@ -107,6 +109,7 @@ class Base extends \Eden\Oauth\Base
      * URL decodes a string
      *
      * @param string
+     *
      * @return string
      */
     protected function decode($rawInput)
@@ -118,13 +121,14 @@ class Base extends \Eden\Oauth\Base
      * Oauth standard parseString
      *
      * @param string
+     *
      * @return array
      */
     protected function parseString($string)
     {
-        $array 	= array();
+        $array  = array();
 
-        if(strlen($string) < 1) {
+        if (strlen($string) < 1) {
             return $array;
         }
 

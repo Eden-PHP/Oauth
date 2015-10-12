@@ -16,12 +16,13 @@ use Eden\Curl\Index as Curl;
 /**
  * Oauth2 abstract class
  *
- * @vendor Eden
- * @package Oauth
+ * @vendor   Eden
+ * @package  Oauth
  * @author Christian Symon M. Buenavista sbuenavista@openovate.com
- * @author Christian Blanquera cblanquera@openovate.com
+ * @author   Christian Blanquera <cblanquera@openovate.com>
+ * @standard PSR-2
  */
-abstract class Base extends \Eden\Oauth\Base 
+abstract class Base extends \Eden\Oauth\Base
 {
     const CODE = 'code';
     const TOKEN = 'token';
@@ -38,7 +39,7 @@ abstract class Base extends \Eden\Oauth\Base
     protected $redirect = null;
     protected $state = null;
     protected $scope = null;
-    protected $display	= null;
+    protected $display  = null;
     protected $requestUrl = null;
     protected $accessUrl = null;
 
@@ -53,22 +54,23 @@ abstract class Base extends \Eden\Oauth\Base
      * @param string
      * @param string
      * @param string
+     *
      * @return void
      */
     public function __construct($client, $secret, $redirect, $requestUrl, $accessUrl)
     {
         //argument test
         Argument::i()
-			//argument 1 must be a string
-            ->test(1, 'string')	
-			//argument 2 must be a string
-            ->test(2, 'string')	
-			//argument 3 must be a url
-            ->test(3, 'url')    
-			//argument 4 must be a url
-            ->test(4, 'url')    
-			//argument 5 must be a url
-            ->test(5, 'url');   
+            //argument 1 must be a string
+            ->test(1, 'string')
+            //argument 2 must be a string
+            ->test(2, 'string')
+            //argument 3 must be a url
+            ->test(3, 'url')
+            //argument 4 must be a url
+            ->test(4, 'url')
+            //argument 5 must be a url
+            ->test(5, 'url');
 
         $this->client       = $client;
         $this->secret       = $secret;
@@ -115,6 +117,7 @@ abstract class Base extends \Eden\Oauth\Base
      * Set state
      *
      * @param *string
+     *
      * @return this
      */
     public function setState($state)
@@ -131,6 +134,7 @@ abstract class Base extends \Eden\Oauth\Base
      * Set scope
      *
      * @param *string|array
+     *
      * @return this
      */
     public function setScope($scope)
@@ -147,6 +151,7 @@ abstract class Base extends \Eden\Oauth\Base
      * Set display
      *
      * @param *string|array
+     *
      * @return this
      */
     public function setDisplay($display)
@@ -163,6 +168,7 @@ abstract class Base extends \Eden\Oauth\Base
      * Check if the response is json format
      *
      * @param *string
+     *
      * @return boolean
      */
     public function isJson($string)
@@ -186,6 +192,7 @@ abstract class Base extends \Eden\Oauth\Base
      * Returns website login url
      *
      * @param string*
+     *
      * @return array
      */
     abstract public function getAccess($code);
@@ -194,26 +201,27 @@ abstract class Base extends \Eden\Oauth\Base
      * Generates a login url to redirect to
      *
      * @param *string
+     *
      * @return string
      */
     protected function generateLoginUrl($query)
     {
         //if there is a scope
-        if(!is_null($this->scope)) {
+        if (!is_null($this->scope)) {
             //if scope is in array
-            if(is_array($this->scope)) {
+            if (is_array($this->scope)) {
                 $this->scope = implode(' ', $this->scope);
             }
             //add scope to the query
             $query['scope'] = $this->scope;
         }
         //if there is state
-        if(!is_null($this->state)) {
+        if (!is_null($this->state)) {
             //add state to the query
             $query['state'] = $this->state;
         }
         //if there is display
-        if(!is_null($this->display)) {
+        if (!is_null($this->display)) {
             //add state to the query
             $query['display'] = $this->display;
         }
@@ -227,14 +235,15 @@ abstract class Base extends \Eden\Oauth\Base
      * @param *string
      * @param string|null
      * @param *bool
+     *
      * @return string
      */
-    protected function generateAccess($query, $code = null, $refreshToken)
+    protected function generateAccess($query, $code = null, $refreshToken = false)
     {
         //if there is a code
-        if(!is_null($code)) {
+        if (!is_null($code)) {
             //if you only want to refresh a token
-            if($refreshToken) {
+            if ($refreshToken) {
                 //put code in the query
                 $query['refresh_token'] = $code;
             //else you want to request a token
@@ -254,13 +263,13 @@ abstract class Base extends \Eden\Oauth\Base
 
         $result =  $curl->getResponse();
 
-        $this->meta	= $curl->getMeta();
+        $this->meta     = $curl->getMeta();
         $this->meta['query'] = $query;
         $this->meta['url'] = $this->accessUrl;
-        $this->meta['response']	= $result;
+        $this->meta['response']     = $result;
 
         //check if results is in JSON format
-        if($this->isJson($result)) {
+        if ($this->isJson($result)) {
             //if it is in json, lets json decode it
             $response =  json_decode($result, true);
         //else its not in json format
