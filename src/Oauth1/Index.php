@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
@@ -19,12 +19,15 @@ use Eden\Oauth\Exception;
  * OAuth server.
  *
  * @vendor   Eden
- * @package  oauth
+ * @package  Oauth
  * @author   Christian Blanquera <cblanquera@openovate.com>
  * @standard PSR-2
  */
 class Index extends Base
 {
+    /**
+     * @const int INSTANCE Flag that designates singleton when using ::i()
+     */
     const INSTANCE = 1;
     
     /**
@@ -34,7 +37,7 @@ class Index extends Base
      * @param *string
      * @param *string
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function consumer($url, $key, $secret)
     {
@@ -53,14 +56,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * GET, HMAC-SHA1
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -114,14 +117,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * GET, HMAC-SHA1, use Authorization Header
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -177,11 +180,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * GET, HMAC-SHA1, use Authorization Header
      *
-     * @param *string url
-     * @param *string consumer key
-     * @param *string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */
@@ -222,11 +225,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * GET, HMAC-SHA1
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */
@@ -265,14 +268,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * POST, HMAC-SHA1
      *
-     * @param *string url
-     * @param *string consumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -326,14 +329,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * POST, HMAC-SHA1, use Authorization Header
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -389,11 +392,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * POST, HMAC-SHA1, use Authorization Header
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */
@@ -434,11 +437,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * POST, HMAC-SHA1
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */
@@ -477,14 +480,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * GET, PLAINTEXT
      *
-     * @param *string url
-     * @param *string consumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -538,14 +541,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * GET, PLAINTEXT, use Authorization Header
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -601,11 +604,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * GET, PLAINTEXT, use Authorization Header
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */
@@ -646,11 +649,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * GET, PLAINTEXT
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */
@@ -689,14 +692,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * POST, PLAINTEXT
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -750,14 +753,14 @@ class Index extends Base
      * Returns an access token given the requiremets
      * POST, PLAINTEXT, use Authorization Header
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param *string token
-     * @param *string token secret
-     * @param array extra query
-     * @param string|null realm
-     * @param string|null verifier
+     * @param *string     $url         url
+     * @param *string     $key         consumer key
+     * @param *string     $secret      consumer secret
+     * @param *string     $token       token
+     * @param *string     $tokenSecret token secret
+     * @param array       $query       extra query
+     * @param string|null $realm       realm
+     * @param string|null $verifier    verifier
      *
      * @return string access token
      */
@@ -813,11 +816,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * POST, PLAINTEXT, use Authorization Header
      *
-     * @param *string url
-     * @param *string cnsumer key
-     * @param *string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */
@@ -858,11 +861,11 @@ class Index extends Base
      * Returns a request token given the requiremets
      * POST, PLAINTEXT
      *
-     * @param string url
-     * @param string cnsumer key
-     * @param string consumer secret
-     * @param array extra query
-     * @param string|null realm
+     * @param *string     $url    url
+     * @param *string     $key    consumer key
+     * @param *string     $secret consumer secret
+     * @param array       $query  extra query
+     * @param string|null $realm  realm
      *
      * @return string request token
      */

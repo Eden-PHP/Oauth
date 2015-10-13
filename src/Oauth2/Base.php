@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
@@ -18,42 +18,115 @@ use Eden\Curl\Index as Curl;
  *
  * @vendor   Eden
  * @package  Oauth
- * @author Christian Symon M. Buenavista sbuenavista@openovate.com
+ * @author   Christian Symon M. Buenavista sbuenavista@openovate.com
  * @author   Christian Blanquera <cblanquera@openovate.com>
  * @standard PSR-2
  */
 abstract class Base extends \Eden\Oauth\Base
 {
+    /**
+     * @const string CODE URL code name
+     */
     const CODE = 'code';
+       
+    /**
+     * @const string TOKEN URL token name
+     */
     const TOKEN = 'token';
+       
+    /**
+     * @const string ONLINE Access type value
+     */
     const ONLINE = 'online';
+       
+    /**
+     * @const string OFFLINE Access type value
+     */
     const OFFLINE = 'offline';
+       
+    /**
+     * @const string AUTO Approval setting
+     */
     const AUTO = 'auto';
+       
+    /**
+     * @const string FORCE Approval setting
+     */
     const FORCE = 'force';
+       
+    /**
+     * @const string TYPE Header key
+     */
     const TYPE = 'Content-Type';
+       
+    /**
+     * @const string REQUEST Post encoding
+     */
     const REQUEST = 'application/x-www-form-urlencoded';
-
+       
+    /**
+     * @var string|null $client Client ID token
+     */
     protected $client = null;
+       
+    /**
+     * @var array $meta Any saved meta data post request
+     */
     protected $meta = array();
+       
+    /**
+     * @var string|null $secret Client hash token
+     */
     protected $secret = null;
+       
+    /**
+     * @var string|null $redirect Where to redirect to
+     */
     protected $redirect = null;
+       
+    /**
+     * @var string|null $state An arbitrary unique string for anti request forgery
+     */
     protected $state = null;
+       
+    /**
+     * @var string|null $scope The permissions needed from the app
+     */
     protected $scope = null;
+       
+    /**
+     * @var string|null $display The login display type to use
+     */
     protected $display  = null;
+       
+    /**
+     * @var string|null $requestUrl The login URL
+     */
     protected $requestUrl = null;
+       
+    /**
+     * @var string|null $accessUrl The REST URL to exchange the code to access token
+     */
     protected $accessUrl = null;
-
+       
+    /**
+     * @var string $responseType The response type to give back
+     */
     protected $responseType = self::CODE;
+       
+    /**
+     * @var string $approvalPrompt The type of approval prompt
+     */
     protected $approvalPrompt = self::AUTO;
 
     /**
      * Preset some tokens we need
      *
-     * @param string
-     * @param string
-     * @param string
-     * @param string
-     * @param string
+     * @param *string $client     The application client ID, can get through registration
+     * @param *string $secret     The application secret, can get through registration
+     * @param *string $redirect   Your callback url or where do you want to redirect the user after authentication
+     * @param *string $requestUrl The request url,  can get through registration
+     * @param *string $accessUrl  The access url,  can get through registration
      *
      * @return void
      */
@@ -116,9 +189,9 @@ abstract class Base extends \Eden\Oauth\Base
     /**
      * Set state
      *
-     * @param *string
+     * @param *string $state The state value to set
      *
-     * @return this
+     * @return Eden\Oauth\Oauth2\Base
      */
     public function setState($state)
     {
@@ -133,9 +206,9 @@ abstract class Base extends \Eden\Oauth\Base
     /**
      * Set scope
      *
-     * @param *string|array
+     * @param *string|array $scope List of scopes
      *
-     * @return this
+     * @return Eden\Oauth\Oauth2\Base
      */
     public function setScope($scope)
     {
@@ -150,9 +223,9 @@ abstract class Base extends \Eden\Oauth\Base
     /**
      * Set display
      *
-     * @param *string|array
+     * @param *string|array $display Display value
      *
-     * @return this
+     * @return Eden\Oauth\Oauth2\Base
      */
     public function setDisplay($display)
     {
@@ -167,7 +240,7 @@ abstract class Base extends \Eden\Oauth\Base
     /**
      * Check if the response is json format
      *
-     * @param *string
+     * @param *string $string The string to test
      *
      * @return boolean
      */
@@ -181,17 +254,19 @@ abstract class Base extends \Eden\Oauth\Base
     }
 
     /**
-     * abstract function for getting login url
+     * Abstract function for getting login url
      *
-     * @param string|null
+     * @param string|null $scope   List of scopes
+     * @param string|null $display The display type
      *
+     * @return string
      */
     abstract public function getLoginUrl($scope = null, $display = null);
 
     /**
      * Returns website login url
      *
-     * @param string*
+     * @param string* $code Usually from the URL after redirected back
      *
      * @return array
      */
@@ -200,7 +275,7 @@ abstract class Base extends \Eden\Oauth\Base
     /**
      * Generates a login url to redirect to
      *
-     * @param *string
+     * @param *string $query Query string to include in the URL
      *
      * @return string
      */
@@ -232,9 +307,9 @@ abstract class Base extends \Eden\Oauth\Base
     /**
      * Returns an access token from server
      *
-     * @param *string
-     * @param string|null
-     * @param *bool
+     * @param *string     $query        Query string to include in the URL
+     * @param string|null $code         Usually from the URL after redirected back
+     * @param *bool       $refreshToken Whether or not we need the tokens refreshed
      *
      * @return string
      */

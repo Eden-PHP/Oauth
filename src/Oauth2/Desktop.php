@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
@@ -17,7 +17,7 @@ use Eden\Oauth\Exception;
  *
  * @vendor   Eden
  * @package  Oauth
- * @author Christian Symon M. Buenavista sbuenavista@openovate.com
+ * @author   Christian Symon M. Buenavista sbuenavista@openovate.com
  */
 class Desktop extends Base
 {
@@ -27,8 +27,8 @@ class Desktop extends Base
     /**
      * Returns website login url
      *
-     * @param string|null
-     * @param string|null
+     * @param string|null $scope   List of scopes
+     * @param string|null $display The display type
      *
      * @return string
      */
@@ -66,7 +66,7 @@ class Desktop extends Base
     /**
      * Returns website login url
      *
-     * @param string*
+     * @param string* $code Usually from the URL after redirected back
      *
      * @return array
      */

@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
  
@@ -23,34 +23,102 @@ use Eden\Curl\Base as Curl;
  */
 class Consumer extends Base
 {
+    /**
+     * @const string AUTH_HEADER Authorization header template
+     */
     const AUTH_HEADER = 'Authorization: OAuth %s';
+
+    /**
+     * @const string POST_HEADER Default content type header
+     */
     const POST_HEADER = 'Content-Type: application/x-www-form-urlencoded';
     
+    /**
+     * @var string|null $consumerKey Client/consumer token
+     */
     protected $consumerKey = null;
+    
+    /**
+     * @var string|null $consumerSecret The client/consumer token secret
+     */
     protected $consumerSecret = null;
+    
+    /**
+     * @var string|null $requestToken The request token
+     */
     protected $requestToken = null;
+    
+    /**
+     * @var string|null $requestSecret Request token secret
+     */
     protected $requestSecret = null;
+    
+    /**
+     * @var bool $useAuthorization Whether to even use the authorization header
+     */
     protected $useAuthorization = false;
     
+    /**
+     * @var string|null $url The authorization URL
+     */
     protected $url  = null;
+    
+    /**
+     * @var string|null $method The request method type
+     */
     protected $method = null;
+    
+    /**
+     * @var string|null $realm Oauth Realm value
+     */
     protected $realm = null;
+    
+    /**
+     * @var int|null $time Timestamp
+     */
     protected $time = null;
+    
+    /**
+     * @var string|null $nonce Random string
+     */
     protected $nonce = null;
+    
+    /**
+     * @var string|null $verifier The OAuth verifier that will be returned for authenticity
+     */
     protected $verifier = null;
+    
+    /**
+     * @var string $callback The callback url
+     */
     protected $callback = null;
+    
+    /**
+     * @var string|null $signature OAuth signature to send
+     */
     protected $signature = null;
+    
+    /**
+     * @var array $meta Collection of meta data post request
+     */
     protected $meta = array();
+    
+    /**
+     * @var array $headers List of headers to send
+     */
     protected $headers  = array();
-     
+    
+    /**
+     * @var bool $json Whether to expect JSON format response
+     */
     protected $json = false;
     
     /**
      * Pre set the url key and secret
      *
-     * @param string
-     * @param string
-     * @param string
+     * @param *string $url    OAuth URL
+     * @param *string $key    Consumer token
+     * @param *string $secret Consumer token secret
      *
      * @return void
      */
@@ -79,8 +147,8 @@ class Consumer extends Base
     /**
      * Returns the authorization header string
      *
-     * @param string
-     * @param bool
+     * @param *string $signature Signature to add to the authorization heder
+     * @param bool   $string     If false will just return the authorization array
      *
      * @return string
      */
@@ -142,6 +210,8 @@ class Consumer extends Base
      * Returns the results
      * parsed as DOMDocument
      *
+     * @param array $query Extra URL parameters
+     *
      * @return DOMDocument
      */
     public function getDomDocumentResponse(array $query = array())
@@ -164,7 +234,7 @@ class Consumer extends Base
     /**
      * Returns the signature
      *
-     * @param array
+     * @param array $query Extra URL parameters
      *
      * @return string
      */
@@ -216,7 +286,8 @@ class Consumer extends Base
     /**
      * Returns the json response from the server
      *
-     * @param array
+     * @param array $query Extra URL parameters
+     * @param bool  $assoc If true will return an associative array
      *
      * @return array
      */
@@ -231,7 +302,7 @@ class Consumer extends Base
     /**
      * Returns the meta of the last call
      *
-     * @param string|null
+     * @param string|null $key A particular meta key
      *
      * @return array
      */
@@ -250,7 +321,7 @@ class Consumer extends Base
     /**
      * Returns the query response from the server
      *
-     * @param array
+     * @param array $query Extra URL parameters
      *
      * @return array
      */
@@ -263,7 +334,7 @@ class Consumer extends Base
     /**
      * Returns the token from the server
      *
-     * @param array
+     * @param array $query Extra URL parameters
      *
      * @return array
      */
@@ -344,7 +415,7 @@ class Consumer extends Base
     /**
      * Returns the signature based on what signature method was set
      *
-     * @param array
+     * @param array $query Extra URL parameters
      *
      * @return string
      */
@@ -364,7 +435,7 @@ class Consumer extends Base
      * Returns the results
      * parsed as SimpleXml
      *
-     * @param array
+     * @param array $query Extra URL parameters
      *
      * @return SimpleXmlElement
      */
@@ -376,7 +447,7 @@ class Consumer extends Base
     /**
      * When sent, sends the parameters as post fields
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function jsonEncodeQuery()
     {
@@ -388,9 +459,9 @@ class Consumer extends Base
      * Sets the callback for authorization
      * This should be set if wanting an access token
      *
-     * @param string
+     * @param *string $url The callback URL
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setCallback($url)
     {
@@ -405,9 +476,10 @@ class Consumer extends Base
     /**
      * Sets request headers
      *
-     * @param array|string
+     * @param *array|string $key   The header key
+     * @param scalar|null  $value The value if key is a string
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setHeaders($key, $value = null)
     {
@@ -429,7 +501,7 @@ class Consumer extends Base
     /**
      * When sent, appends the parameters to the URL
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setMethodToGet()
     {
@@ -440,7 +512,7 @@ class Consumer extends Base
     /**
      * When sent, sends the parameters as post fields
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setMethodToPost()
     {
@@ -451,9 +523,9 @@ class Consumer extends Base
     /**
      * Some Oauth servers requires a realm to be set
      *
-     * @param string
+     * @param *string $realm The OAuth realm
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setRealm($realm)
     {
@@ -467,7 +539,7 @@ class Consumer extends Base
     /**
      * Sets the signature encryption type to HMAC-SHA1
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setSignatureToHmacSha1()
     {
@@ -478,7 +550,7 @@ class Consumer extends Base
     /**
      * Sets the signature encryption to RSA-SHA1
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setSignatureToRsaSha1()
     {
@@ -489,7 +561,7 @@ class Consumer extends Base
     /**
      * Sets the signature encryption to PLAINTEXT
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setSignatureToPlainText()
     {
@@ -501,10 +573,10 @@ class Consumer extends Base
      * Sets the request token and secret.
      * This should be set if wanting an access token
      *
-     * @param string
-     * @param string
+     * @param *string $token  Consumer or request token
+     * @param *string $secret Consumer or request token secret
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setToken($token, $secret)
     {
@@ -524,9 +596,9 @@ class Consumer extends Base
      * Some Oauth servers requires a verifier to be set
      * when retrieving an access token
      *
-     * @param string
+     * @param *string $verifier Verifier string
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function setVerifier($verifier)
     {
@@ -540,9 +612,9 @@ class Consumer extends Base
     /**
      * When sent, appends the authroization to the headers
      *
-     * @param bool
+     * @param bool $use Whether to turn it on or not
      *
-     * @return Eden\Oauth\Oauth\Consumer
+     * @return Eden\Oauth\Oauth1\Consumer
      */
     public function useAuthorization($use = true)
     {

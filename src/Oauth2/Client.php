@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
@@ -17,23 +17,38 @@ use Eden\Oauth\Exception;
  *
  * @vendor   Eden
  * @package  Oauth
- * @author Christian Symon M. Buenavista <sbuenavista@openovate.com>
- * @author Christian Blanquera <cblanquera@openovate.com>
- * @author Ian Mark Muninio <ianmuninio@openovate.com>
+ * @author   Christian Symon M. Buenavista <sbuenavista@openovate.com>
+ * @author   Christian Blanquera <cblanquera@openovate.com>
+ * @author   Ian Mark Muninio <ianmuninio@openovate.com>
+ * @standard PSR-2
  */
 class Client extends Base
 {
-    const INSTANCE = 1;
 
+    /**
+     * @var string $responseType The response type to give back
+     */
     protected $responseType = self::CODE;
+
+    /**
+     * @var string $accessType The access type to give back
+     */
     protected $accessType = self::ONLINE;
+       
+    /**
+     * @var string $approvalPrompt The type of approval prompt
+     */
     protected $approvalPrompt = self::FORCE;
+       
+    /**
+     * @var string $grantType The type of grant expected
+     */
     protected $grantType = 'authorization_code';
 
     /**
      * Sets auth for offline access.
      *
-     * @return \Eden\Oauth\Oauth2\Client
+     * @return Eden\Oauth\Oauth2\Client
      */
     public function forOffline()
     {
@@ -45,7 +60,7 @@ class Client extends Base
     /**
      * Sets auth for online access.
      *
-     * @return \Eden\Oauth\Oauth2\Client
+     * @return Eden\Oauth\Oauth2\Client
      */
     public function forOnline()
     {
@@ -57,7 +72,7 @@ class Client extends Base
     /**
      * Sets approval prompt to auto.
      *
-     * @return \Eden\Oauth\Oauth2\Client
+     * @return Eden\Oauth\Oauth2\Client
      */
     public function approvalPromptToAuto()
     {
@@ -69,7 +84,7 @@ class Client extends Base
     /**
      * Sets approval prompt to force.
      *
-     * @return \Eden\Oauth\Oauth2\Client
+     * @return Eden\Oauth\Oauth2\Client
      */
     public function approvalPromptToFore()
     {
@@ -81,7 +96,7 @@ class Client extends Base
     /**
      * Sets response type to code.
      *
-     * @return \Eden\Oauth\Oauth2\Client
+     * @return Eden\Oauth\Oauth2\Client
      */
     public function responseTypeToCode()
     {
@@ -93,7 +108,7 @@ class Client extends Base
     /**
      * Sets response type to token.
      *
-     * @return \Eden\Oauth\Oauth2\Client
+     * @return Eden\Oauth\Oauth2\Client
      */
     public function responseTypeToToken()
     {
@@ -105,8 +120,8 @@ class Client extends Base
     /**
      * Returns website login url.
      *
-     * @param string|null
-     * @param string|null
+     * @param string|null $scope   List of scopes
+     * @param string|null $display The display type
      *
      * @return url
      */
@@ -144,7 +159,7 @@ class Client extends Base
     /**
      * Returns website login url.
      *
-     * @param string*
+     * @param string* $code Usually from the URL after redirected back
      *
      * @return array
      */

@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
@@ -13,29 +13,51 @@ namespace Eden\Oauth\Oauth1;
  *  Trigger when something is false
  *
  * @vendor   Eden
- * @package  oauth
+ * @package  Oauth
  * @author   Christian Blanquera <cblanquera@openovate.com>
  * @standard PSR-2
  */
 class Base extends \Eden\Oauth\Base
 {
+    /**
+     * @const string HMAC_SHA1 Request parameters encryption type
+     */
     const HMAC_SHA1 = 'HMAC-SHA1';
-    const RSA_SHA1  = 'RSA-SHA1';
+       
+    /**
+     * @const string RSA_SHA1 Request parameters encryption type
+     */
+    const RSA_SHA1 = 'RSA-SHA1';
+       
+    /**
+     * @const string PLAIN_TEXT Request parameters encryption type
+     */
     const PLAIN_TEXT = 'PLAINTEXT';
-
+       
+    /**
+     * @const string POST Request method
+     */
     const POST = 'POST';
+       
+    /**
+     * @const string GET Request method
+     */
     const GET = 'GET';
-
-    const OAUTH_VERSION     = '1.0';
+       
+    /**
+     * @const string OAUTH_VERSION OAuth protocol version marker
+     */
+    const OAUTH_VERSION = '1.0';
 
     /**
      * Generates an oauth standard query
      *
-     * @param array
-     * @param string
-     * @param bool
-     * @param bool
-     * @param string
+     * @param *array $params    Parameters to include in the authentecation request
+     * @param string $separator The parameter delimeter
+     * @param bool   $noQuotes  Whether to escape string by quotes
+     * @param bool   $subList   If to include "sub lists"
+     *
+     * @return string
      */
     protected function buildQuery($params, $separator = '&', $noQuotes = true, $subList = false)
     {
@@ -84,7 +106,7 @@ class Base extends \Eden\Oauth\Base
     /**
      * Generates an oauth standard encoding
      *
-     * @param string
+     * @param *string $string The string to encode
      *
      * @return string
      */
@@ -108,7 +130,7 @@ class Base extends \Eden\Oauth\Base
     /**
      * URL decodes a string
      *
-     * @param string
+     * @param *string $rawInput The raw input to decode
      *
      * @return string
      */
@@ -120,7 +142,7 @@ class Base extends \Eden\Oauth\Base
     /**
      * Oauth standard parseString
      *
-     * @param string
+     * @param *string $string The string to parse into an array
      *
      * @return array
      */

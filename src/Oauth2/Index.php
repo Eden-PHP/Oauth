@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
@@ -23,16 +23,19 @@ use Eden\Oauth\Exception;
  */
 class Index extends Base
 {
+    /**
+     * @const int INSTANCE Flag that designates singleton when using ::i()
+     */
     const INSTANCE = 1;
 
     /**
      * Returns oauth 2 client side class
      *
-     * @param *string The application client ID, can get through registration
-     * @param *string The application secret, can get through registration
-     * @param *string Your callback url or where do you want to redirect the user after authentication
-     * @param *string The request url,  can get through registration
-     * @param *string The access url,  can get through registration
+     * @param *string $client     The application client ID, can get through registration
+     * @param *string $secret     The application secret, can get through registration
+     * @param *string $redirect   Your callback url or where do you want to redirect the user after authentication
+     * @param *string $requestUrl The request url,  can get through registration
+     * @param *string $accessUrl  The access url,  can get through registration
      *
      * @return Eden\Oauth\Oauth\Client
      */
@@ -57,11 +60,11 @@ class Index extends Base
     /**
      * Returns oauth 2 desktop class
      *
-     * @param *string The application client ID, can get through registration
-     * @param *string The application secret, can get through registration
-     * @param *string Your callback url or where do you want to redirect the user after authentication
-     * @param *string The request url,  can get through registration
-     * @param *string The access url,  can get through registration
+     * @param *string $client     The application client ID, can get through registration
+     * @param *string $secret     The application secret, can get through registration
+     * @param *string $redirect   Your callback url or where do you want to redirect the user after authentication
+     * @param *string $requestUrl The request url,  can get through registration
+     * @param *string $accessUrl  The access url,  can get through registration
      *
      * @return Eden\Oauth\Oauth2\Client
      */

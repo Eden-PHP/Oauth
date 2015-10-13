@@ -1,16 +1,16 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
 namespace Eden\Oauth;
 
 /**
- * Core Factory Class
+ * Factory Class
  *
  * @vendor   Eden
  * @package  Core
@@ -19,6 +19,9 @@ namespace Eden\Oauth;
  */
 class Index extends Base
 {
+    /**
+     * @const int INSTANCE Flag that designates singleton when using ::i()
+     */
     const INSTANCE = 1;
     
     /**
