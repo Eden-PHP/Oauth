@@ -1,9 +1,9 @@
 <?php //-->
-/*
- * This file is part of the Oauth package of the Eden PHP Library.
- * (c) 2013-2014 Openovate Labs
+/**
+ * This file is part of the Eden PHP Library.
+ * (c) 2014-2016 Openovate Labs
  *
- * Copyright and license information can be found at LICENSE
+ * Copyright and license information can be found at LICENSE.txt
  * distributed with this package.
  */
 
@@ -15,11 +15,11 @@ use Eden\Oauth\Exception;
 /**
  * Oauth2 desktop class
  *
- * @vendor Eden
- * @package Oauth
- * @author Christian Symon M. Buenavista sbuenavista@openovate.com
+ * @vendor   Eden
+ * @package  Oauth
+ * @author   Christian Symon M. Buenavista sbuenavista@openovate.com
  */
-class Desktop extends Base 
+class Desktop extends Base
 {
     protected $responseType = self::CODE;
     protected $grantType = 'authorization_code';
@@ -27,27 +27,28 @@ class Desktop extends Base
     /**
      * Returns website login url
      *
-     * @param string|null
-     * @param string|null
+     * @param string|null $scope   List of scopes
+     * @param string|null $display The display type
+     *
      * @return string
      */
     public function getLoginUrl($scope = null, $display = null)
     {
         //argument test
         Argument::i()
-			//argument 1 must be a string, array or null
-            ->test(1, 'string', 'array', 'null')	
-			//argument 2 must be a string, array or null
-            ->test(2, 'string', 'array', 'null');	
+            //argument 1 must be a string, array or null
+            ->test(1, 'string', 'array', 'null')
+            //argument 2 must be a string, array or null
+            ->test(2, 'string', 'array', 'null');
 
         //if scope in not null
-        if(!is_null($scope)) {
+        if (!is_null($scope)) {
             //lets set the scope
             $this->setScope($scope);
         }
 
         //if display in not null
-        if(!is_null($display)) {
+        if (!is_null($display)) {
             //lets set the display
             $this->setDisplay($display);
         }
@@ -65,7 +66,8 @@ class Desktop extends Base
     /**
      * Returns website login url
      *
-     * @param string*
+     * @param string* $code Usually from the URL after redirected back
+     *
      * @return array
      */
     public function getAccess($code, $refreshToken = false)
@@ -75,10 +77,10 @@ class Desktop extends Base
 
         //populate fields
         $query = array(
-            'client_id'		=> $this->client,
-            'client_secret'	=> $this->secret,
-            'redirect_uri'	=> $this->redirect,
-            'grant_type'	=> $this->grantType);
+            'client_id'         => $this->client,
+            'client_secret'     => $this->secret,
+            'redirect_uri'  => $this->redirect,
+            'grant_type'    => $this->grantType);
 
         return $this->generateAccess($query, $code, $refreshToken);
     }
